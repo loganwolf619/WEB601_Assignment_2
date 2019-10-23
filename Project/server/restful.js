@@ -27,25 +27,25 @@ const routes = require('./routes')
 //We are now going to create route for each request type. We are going to use the ID to retreive the data.
 
 // We are going to use the routes to get all the Graphics
-route.get('/Graphics', routes.graphicsList.listAllGrpahics);
+route.get('/Graphics', routes.graphicsList.listAllGrapahics);
 
 // We are going to obtain single Graphics based on the GraphicsID
-router.get('/Graphics/:GraphicsID', middleware.checkID, routes.graphicsList.listAllGrpahics);
+router.get('/Graphics/:GraphicsID', middleware.checkID, routes.graphicsList.listAllGraphics);
 
 // We are going to create a route to POST a new Graphics by creating  a new record in the database
 router.post('/Graphics', jsonParser, routes.graphicsList.postGraphics);
 
 // We are going to Update or patch the existing Graphics in the database if needed
-router.patch('/songs/:GraphicsID', jsonParser, middleware.checkID, routes.graphicsList.updateGraphics)
+router.patch('/Graphics/:GraphicsID', jsonParser, middleware.checkID, routes.graphicsList.updateGraphics)
 
 // We are going to Delete a graphics from the database
 router.delete('/Graphics/:GraphicsID', middleware.checkID, routes.graphicsList.deleteGraphics)
 
-// We are going to route to POST a new Support Team
-router.post('/supportTeam', jsonParser, routes.supportTeam.postSupportTeam)
+// We are going to route to POST a new Contact Team
+router.post('/ContactUs', jsonParser, routes.supportTeam.postSupportTeam)
 
 // We are going to route to POST to the newly connected accounts
-router.post('/users', jsonParser, routes.users.postUsers)
+router.post('/Users', jsonParser, routes.users.postUsers)
 
 // We are going to use Express to route between the requested host and route
 app.use('/api', cors(), router);
