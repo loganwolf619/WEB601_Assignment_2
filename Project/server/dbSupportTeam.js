@@ -2,6 +2,7 @@
 
 // We are going to add a suport team to the database. 
 function postSupportTeam(req, res) {
+    // We are going to connect the database on config.js with the help of restful.js
     const { knex } = req.app.locals
     const payload = req.body
 
@@ -15,12 +16,12 @@ function postSupportTeam(req, res) {
         knex('support')
         .then(response => {
             if (response) {
-                res.status(201).json('Support Team has got an new message')
+                res.status(201).json('Support Team has got a new message')
             }
         })
         .catch(error => res.status(500).json(error))
     } else {
-        return res.status(400).json('Mandatory columns are required ${manadatoryColumns}');
+        return res.status(400).json(`Mandatory columns are required ${manadatoryColumns}`);
     }
 }
 

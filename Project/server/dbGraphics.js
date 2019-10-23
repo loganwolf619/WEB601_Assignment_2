@@ -1,6 +1,6 @@
 // This is similar as SQL query. Here, we are usig KNEX t0 build queries or in a manner of structure the data
 // Listing all the Grpahics. It is more or less used to select all the function
-function listAllGrpahics(req,res) {
+function listAllGraphics(req,res) {
     const { knex } = req.app.locals
     knex
         .select ('GraphicsID', 'GraphicsType', 'GraphicsQuality', 'GraphicsArtist', 'UsersID')
@@ -11,20 +11,33 @@ function listAllGrpahics(req,res) {
         //To catch the error while exporting the data
         .catch(error => res.status(500).json(error))
 }
+function listGraphicsDisplay(req, res) {
+    // We are going to access the database connection with the help of config.js
+    const { knex } = req.app.locals
+    // We are going to select the database query
+    knex
+        .select('GraphicsID', 'GraphicsArtist', 'GraphicsTitle', 'GraphicsType', 'GraphicsQuality')
+        .from('Graphics')
+        .orderBy('GraphicsID', 'desc')
+        .limit(12)
+
+        .then(data => res.status.(200).json(data))
+
+        // Now we are going to catch any error if not right
+        .catch(error => res.status.(500).json(error))
+}
 
 //This is a function which is used to retreive a single Graphics(Illustration, Deisgns, or Photos) with the help of GraphicsID
 function listSingleGraphics(req, res) {
     //We are resetructring
     const { knex } = req.app.locals
     const { GraphicsID } = req.params
-    knex 
-
     // This includes the Database Query
-
-    .select ('GraphicsID', 'GraphicsType', 'GraphicsQuality', 'GraphicsTitle', 'GraphicsArtist', 'UsersID')
-    .from('Graphics')
-    .where({
-        GraphicsID: '${GraphicsID}'
+    knex 
+        .select ('GraphicsID', 'GraphicsType', 'GraphicsQuality', 'GraphicsTitle', 'GraphicsArtist', 'UsersID')
+        .from('Graphics')
+        .where({
+            GraphicsID: `${GraphicsID}`
     })
 
     //Response
@@ -32,7 +45,7 @@ function listSingleGraphics(req, res) {
         if (data.length > 0) {
             return res.status(200).json(data)
         } else {
-            return res.status(400).json('Graphics with ID ${GraphicsID} does not exist');
+            return res.status(400).json(`Graphics with ID ${GraphicsID} does not exist`);
         }
     })
     .catch(error => res.status(500).json(error))
@@ -53,13 +66,13 @@ function postGraphics(req,res) {
             .insert(payload)
             .then(response => {
                 if (resonse) {
-                    res.status(201).json('Graphics record has been created')
+                    res.status(200).json('Graphics record has been created')
                 }
             })
             .catch(error => res.status(500).json(error))
 
     } else {
-        return res.status(400).json('Manadatory Columns are required ${mandatoryColumns}');
+        return res.status(400).json(`Manadatory Columns are required ${mandatoryColumns}`);
 
     }
 }
@@ -76,7 +89,7 @@ function updateGraphics(req, res) {
             if (response) {
                 res.status(204).json()
             } else {
-                return res.status(404).json('Graphics with ID ${GraphicsID} cannot be found');
+                return res.status(404).json(`Graphics with ID ${GraphicsID} cannot be found`);
             }
         })
         .catch(error => res.status(500).json(error))
@@ -92,9 +105,9 @@ function deleteGraphics(req, res) {
         .del()
         .then(response => {
             if (response) {
-                res.status(200).json('Graphics with ID ${GraphicsID} is deleted')
+                res.status(200).json(`Graphics with ID ${GraphicsID} is deleted`)
             } else {
-                res.status(404).json('Graphics with ID ${GraphicsID} is not found')
+                res.status(404).json(`Graphics with ID ${GraphicsID} is not found`)
             }
         })
         .catch(error => res.status(500).json(error))
@@ -102,8 +115,9 @@ function deleteGraphics(req, res) {
 
 // We need to export all the functions as objects of module objects
 module.exports = {
-    listAllGrpahics, 
+    listAllGraphics, 
     listSingleGraphics,
+    listGraphicsDisplay,
     postGraphics,
     updateGraphics,
     deleteGraphics

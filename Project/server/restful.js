@@ -27,10 +27,10 @@ const routes = require('./routes')
 //We are now going to create route for each request type. We are going to use the ID to retreive the data.
 
 // We are going to use the routes to get all the Graphics
-router.get('/Graphics', routes.graphicsList.listAllGrapahics);
+router.get('/Graphics', routes.graphicsList.listAllGraphics);
 
 // We are going to obtain single Graphics based on the GraphicsID
-router.get('/Graphics/:GraphicsID', middleware.checkID, routes.graphicsList.listAllGraphics);
+router.get('/Graphics/:GraphicsID', middleware.checkID, routes.graphicsList.listSingleGraphics);
 
 // We are going to display the recent Graphics that has been added to be published
 router.get('/Graphics/GraphicsDisplay', routes.graphicsList.listGraphicsDisplay)
@@ -53,10 +53,13 @@ router.post('/Users/:usersEmail', routes.users.listSingleUsers)
 // We are going to route to POST to the newly connected Users
 router.post('/Users', jsonParser, routes.users.postUsers)
 
+// We are going to route tp update the existing Users
+router.put('/Users/:UsersEmail', jsonParser, routes.users.updateUsers)
+
 // We are going to use Express to route between the requested host and route
 app.use('/api', cors(), router);
 
 // We are going let the server to start listening to the port that has been specified in the config.js file
 app.listen(config.APIServerPort, () => {
-  console.log('Server has started on this port:>-->-  ${config.APIServerPort}');
+  console.log(`Server has started on this port:>-->-  ${config.APIServerPort}`);
 });
