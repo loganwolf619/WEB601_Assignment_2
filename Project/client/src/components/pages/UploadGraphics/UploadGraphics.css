@@ -1,0 +1,70 @@
+.graphicsContainer {
+    width: 50%;
+    height: 50%;
+    background-color: lightseagreen;
+    text-emphasis: bold black;
+    text-align:center;
+    margin: 2px;
+    padding: 4px;
+    border: 2px double dashed brown;
+    border-radius: 10px;
+    color: black;
+}
+
+.uploadGraphics {
+    padding: 10px;
+    margin: 2px 2px  2px 3px;
+    border-radius: 4px;
+    border: 2px solid black;
+    width: auto;
+    color: greenyellow;
+}
+
+.topLeftColumn {
+    float: left;
+    width: 25%
+}
+
+.topRightColumn {
+    float: right;
+    width: 25%
+}
+
+.topLeftUploadColumn {
+    padding: 10px;
+    margin: 2px 2px  2px 3px;
+    border-radius: 4px;
+    border: 2px solid black;
+    width: auto;
+    color: greenyellow;
+}
+
+.topRightUploadColumn {
+    padding: 10px;
+    margin: 2px 2px  2px 3px;
+    border-radius: 4px;
+    border: 2px solid black;
+    width: auto;
+    color: greenyellow;
+}
+
+.errorNotification {
+    color: goldenrod;
+    margin-inline: 8px;
+    background-color: #ddd;
+    outline: none;
+
+}
+.button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  .button:hover {
+    opacity: 0.8;
+  }

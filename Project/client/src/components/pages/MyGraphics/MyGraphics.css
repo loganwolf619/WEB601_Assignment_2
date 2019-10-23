@@ -1,0 +1,24 @@
+.myGraphicsContainer {
+    width: 33%;
+    height: 25%;
+    background-color:none;
+    border: darkbluw;
+    margin: 3px 3px 3px 3px;
+    text-align: center bottom;
+    padding: 2px;
+    min-height:70vh;
+
+}
+.listGraphicsType {
+    width: 50%;
+    height: 50%;
+    background-color:none;
+    border: darkbluw;
+    margin: 3px 3px 3px 3px;
+    text-align: center bottom;
+    padding: 2px;
+    min-height:70vh;
+}
+.myGraphicsColumn {
+    background-color:lightsalmon;
+}

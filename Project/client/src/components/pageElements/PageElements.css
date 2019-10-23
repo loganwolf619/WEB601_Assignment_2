@@ -1,0 +1,18 @@
+/* Here we are going to change to make changes to the Page Title */
+
+
+.text-title{
+  font-family: 'Crete Round', serif;
+  letter-spacing: 0.3rem;
+  text-transform: uppercase;
+  text-align: center;
+}
+.text-blue{
+  color: var(--mainBlue);
+}
+.text-bright{
+  color: var(--lightBlue);
+}
+.text-yellow{
+  color:var(--mainYellow);
+}

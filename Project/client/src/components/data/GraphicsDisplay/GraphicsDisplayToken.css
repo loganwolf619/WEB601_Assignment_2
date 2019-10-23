@@ -1,0 +1,51 @@
+.graphicsDisplayContainer {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 4px;
+}
+.graphics {
+    text-align: center;
+    padding: 30px;
+    margin: 5px;
+    width: 25%;
+    background-color: beige;
+    border-radius: 6px;
+    box-shadow: 3px 6px;
+    text-shadow: 2px 2px 2px rgb(27, 5, 48);
+}
+.graphicsDisplayType {
+    float: left;
+    box-shadow: 3px 6px;
+    text-shadow: 2px 2px 2px rgb(11, 156, 161);
+}
+
+.graphicsDisplayArtist {
+    float: right;
+    box-shadow: 3px 6px;
+    text-shadow: 2px 2px 2px rgb(219, 7, 71);
+}
+.graphicsDisplayQuality {
+    float: center;
+    box-shadow: 3px 6px;
+    text-shadow: 2px 2px 2px rgb(11, 236, 41);
+}
+
+.graphicsDisplayViewer {
+    float: center;
+    text-align: center;
+    padding: 5px;
+    margin-top: 5px;
+    width: 75%;
+    background-color: beige;
+    border-radius: 6px;
+    box-shadow: 3px 6px;
+    text-shadow: 2px 2px 2px rgb(36, 29, 43);
+}
+.displayImage {
+    height: 25px;
+    width: 25px;
+    margin: 2px 2px black;
+    padding: 2px;
+    border-radius: 10px;
+    box-shadow: 4px 4px;
+}

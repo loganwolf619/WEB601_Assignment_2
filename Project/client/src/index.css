@@ -1,0 +1,74 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+p{
+  color: red !important;
+}
+h1,h2, h3, h4, h5 {
+  color: darkblue !important;
+}
+.show>.dropdown-menu {
+  display: block;
+  position: absolute;
+}
+
+.navbar {
+  background-color: yellowgreen;
+}
+.navbar .navbar-brand:hover{
+  color: black ;
+}
+.navbar .navbar-toggleable-md {
+  background-color: black ;
+}
+.navbar-toggler {
+  background-color: red;
+}
+.navbar .navbar-nav li a{
+  color: blue ;
+}
+.navbar .nav-item .dropdown-menu .dropdown-item{
+  color: red ;
+}
+.navbar .nav-item .dropdown-menu .dropdown-item:hover{
+  color: orangered ;
+  background-color: black ;
+  opacity: 0.5 ;
+}
+.navbar {
+  background-color:teal ;
+  background-image: none ;
+  background-repeat: no-repeat ;
+  border-color: green ;
+ }
+ .social-link {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  border-radius: 50%;
+  transition: all 0.3s;
+  font-size: 0.9rem;
+}
+
+.social-link:hover,
+.social-link:focus {
+  background: #ddd;
+  text-decoration: none;
+  color: #555;
+}
+
+

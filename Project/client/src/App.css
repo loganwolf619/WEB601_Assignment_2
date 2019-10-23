@@ -1,0 +1,61 @@
+/* These are the main colors that would be used in the development of this Website */
+:root{
+ --mainBlue:#2a2a72;
+ --lightBlue:#009ffd;
+ --mainWhite:#f3f2f3;
+ --mainDark:#232528;
+ --mainYellow:#ffa400;
+ --mainGrey:Grey; 
+ --mainOrange: Orange;
+ --darkRed: red; 
+ 
+}
+/* This will be the header for the website */
+.header {
+  height:16vh;
+  background-color: var(--mainDark) !important;
+}
+
+/* This will be the part where we will be changing the body structure of the Website */
+body{
+font-family: 'Satisfy', cursive !important;
+background: var(--mainWhite) !important;
+/* background: url("/desk1.jpg")!important; */
+color:var(--mainDark) !important;
+}
+/* This will be the part where we will Styling the Footer */
+.footer {
+  height: 16vh;
+  background-color: var(--mainDark) !important;
+  clear: both;
+}
+
+/* This will be the part where we will be styling the Container */
+.container {
+  min-height: 70vh;
+  background-color: var(--mainOrange) !important;
+}
+
+
+
+
+
+/* 
+.text-title{
+  font-family: 'Crete Round', serif;
+  letter-spacing: 0.3rem;
+  text-transform: uppercase;
+}
+.text-blue{
+  color: var(--mainBlue);
+}
+.text-bright{
+  color: var(--lightBlue);
+}
+.text-yellow{
+  color:var(--mainYellow);
+}
+.navbar {
+  color: red !important;
+  background-color: grey !important;
+} */

@@ -1,0 +1,39 @@
+.navbar {
+    /* color: red !important; */
+    background-color: wheat !important;
+    padding: 5%;
+    background-repeat: no-repeat ;
+    border-color: green ;
+    background-image: none ;
+  }
+  
+  .navbar-logo {
+      height: 70px;
+      width: 100px;
+      float: left;
+  }
+
+  .navbar ul li {
+      float: left;
+  }
+
+  .navbar-brand:hover{
+    color: black ;
+  }
+  .navbar-toggleable-md {
+    background-color: black ;
+  }
+  .navbar-toggler {
+    background-color: red;
+  }
+ .navbar-nav li a{
+    color: blue ;
+  }
+  .navbar-item {
+      float: left;
+  }
+ .dropdown-menu .dropdown-item:hover{
+    display: black ;
+    opacity: 0.5 ;
+
+  }

@@ -1,0 +1,10 @@
+.users {
+    text-align: center;
+    padding: 30px;
+    margin: 5px;
+    width: 25%;
+    background-color: palegoldenrod;
+    border-radius: 6px;
+    box-shadow: 3px 6px;
+    text-shadow: 2px 2px 2px greenyellow;
+}

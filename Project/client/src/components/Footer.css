@@ -1,0 +1,12 @@
+/* We are going to change the style for the footer */
+
+.creditLink {
+color: black;
+background-color: white;
+}
+
+.footerContainer {
+    min-height: 16vh;
+    background-color: blanchedalmond;
+    clear: both;
+}

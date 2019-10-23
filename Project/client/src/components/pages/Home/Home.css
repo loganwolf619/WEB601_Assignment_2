@@ -1,0 +1,67 @@
+.websiteHome {
+    margin: 2px auto;
+    display: inline-block;
+    background-color: beige;
+    text-emphasis-color: bold black;
+}
+
+.header {
+    margin: 2px auto;
+    display: inline-block;
+    background-color: beige;
+    text-emphasis-color: bold black;
+}
+
+.row {
+    margin: 2px auto;
+    display: inline-block;
+    background-color: beige;
+}
+
+.side {
+    margin: 2px auto;
+    display: inline-block;
+    background-color: beige;
+}
+.fakeimg {
+    margin: 2px auto;
+    display: inline-block;
+    background-color: beige;
+}
+.main {
+    margin: 2px auto;
+    display: inline-block;
+    background-color: beige;
+    text-emphasis-color: bold black;
+}
+.uploadGraphics {
+    min-height: 70vh; 
+}
+.homePage {
+    margin: 2px auto;
+    display: inline-block;
+    background-color: beige;
+    text-emphasis-color: bold black;
+}
+
+.graphicsDisplay {
+    padding: 4px;
+    min-height: 70vh;
+}
+
+.footer {
+    margin: 2px auto;
+    display: inline-block;
+    background-color: beige;
+}
+
+.searchBar {
+    margin: 2px auto;
+    display: inline-block;
+    background-color: beige;
+}
+.container {
+    padding: 16px;
+  }
+  
+  

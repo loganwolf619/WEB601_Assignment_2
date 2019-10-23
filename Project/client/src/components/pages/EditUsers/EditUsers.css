@@ -1,0 +1,73 @@
+.EditUsersForm {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+    text-align: center;
+}
+
+.form-group {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: yellow;
+    text-emphasis: bold black;
+
+}
+
+.displayErrorMessage {
+    color: goldenrod;
+    margin-inline: 8px;
+    background-color: #ddd;
+    outline: none;
+
+}
+
+.form-check {
+    display: block;
+}
+
+.formConfirm {
+    display: block;
+}
+
+.checkLabel {
+    background-color: #f1f1f1;
+    text-align: center;
+    border: 2px solid brown;
+    margin-bottom: 25px;
+}
+
+.confirmButton{
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+}
+
+.confirmButton:hover{
+    opacity: 1;
+}
+
+
+.cancelButton {
+    background-color: red;
+    color: white;
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+}
+.cancelButton:hover{
+    opacity: 1;
+}

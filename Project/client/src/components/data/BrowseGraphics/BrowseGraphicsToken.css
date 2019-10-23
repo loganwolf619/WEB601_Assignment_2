@@ -1,0 +1,33 @@
+.GraphicsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 4px;
+}
+
+.graphics {
+    text-align: center;
+    padding: 30px;
+    margin: 5px;
+    width: 25%;
+    background-color: beige;
+    border-radius: 6px;
+    box-shadow: 3px 6px;
+    text-shadow: 2px 2px 2px blueviolet;
+}
+
+.graphicsType {
+    float: left;
+    box-shadow: 3px 6px;
+    text-shadow: 2px 2px 2px blueviolet;
+}
+
+.graphicsArtist {
+    float: right;
+    box-shadow: 3px 6px;
+    text-shadow: 2px 2px 2px blueviolet;
+}
+.graphicsQuality {
+    float: center;
+    box-shadow: 3px 6px;
+    text-shadow: 2px 2px 2px blueviolet;
+}
