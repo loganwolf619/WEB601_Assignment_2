@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
+import {ButtonContainer} from './Button'
 
 export default class DropDown extends Component {
     constructor() {
@@ -85,13 +86,3 @@ export default class DropDown extends Component {
         )
     }
 }
-
-{/* <li className="navbar-item">
-<Link to="/editusers" className="navbar-item">
-  <a className="nav-link" href="message">Edit Users</a>
-</Link>
-</li>
-
-
-
- */}

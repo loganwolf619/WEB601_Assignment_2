@@ -21,13 +21,13 @@ function listGraphicsDisplay(req, res) {
         .orderBy('GraphicsID', 'desc')
         .limit(12)
 
-        .then(data => res.status.(200).json(data))
+        .then(data => res.status(200).json(data))
 
         // Now we are going to catch any error if not right
-        .catch(error => res.status.(500).json(error))
+        .catch(error => res.status(500).json(error))
 }
 
-//This is a function which is used to retreive a single Graphics(Illustration, Deisgns, or Photos) with the help of GraphicsID
+// //This is a function which is used to retreive a single Graphics(Illustration, Deisgns, or Photos) with the help of GraphicsID
 function listSingleGraphics(req, res) {
     //We are resetructring
     const { knex } = req.app.locals
@@ -52,20 +52,20 @@ function listSingleGraphics(req, res) {
 }
 
 //Add a Graphics to the Database
-function postGraphics(req,res) {
+function postGraphics(req, res) {
     const { knex } = req.app.locals
     const payload = req.body
     // This parameter is being sent from the client which is a part of the Post Request
-    const manadatoryColumns = ['GraphicsType', 'GraphicsQuality', 'GraphicsTitle', 'GraphicsArtist', 'UsersID']
+    const mandatoryColumns = [/*'GraphicsType', 'GraphicsQuality', 'GraphicsTitle', 'GraphicsArtist'*/]
     const payloadKeys = Object.keys(payload)
-    const manadatoryColumnsExists = manadatoryColumns.every(mc => payloadKeys.includes(mc))
+    const mandatoryColumnsExists = mandatoryColumns.every(mc => payloadKeys.includes(mc))
 
     //Checking if all important columns are filled before they are inserted into the query. If any information is missing it will return an error
-    if (manadatoryColumnExists) {
+    if (mandatoryColumnsExists) {
         knex('Graphics')
             .insert(payload)
             .then(response => {
-                if (resonse) {
+                if (response) {
                     res.status(200).json('Graphics record has been created')
                 }
             })
@@ -100,7 +100,7 @@ function deleteGraphics(req, res) {
     const { knex } = req.app.locals
     const { GraphicsID } = req.params
 
-    knex('Graphics')
+    knex('graphics')
         .where('GraphicsID', GraphicsID)
         .del()
         .then(response => {

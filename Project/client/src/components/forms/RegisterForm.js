@@ -1,12 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Form, Button} from 'semantic-ui-react'
 import Validator from 'validator'
 import ErrorMessage from '../message/ErrorMessage'
 import './RegisterForm.css'
-import { ButtonContainer, ButtonForm } from '../pageElements/Button'
+import { ButtonContainer} from '../pageElements/Button'
 
-class RegisterForm extends React.Component {
+export default class RegisterForm extends React.Component {
     state = {
         data: {
             UsersEmail: '',
@@ -39,9 +38,8 @@ class RegisterForm extends React.Component {
     render() {
         const { data, ErrorNotification } = this.state
         return (
-         <Form class="modal-content animate"  action="/action_page.php" method="post" onSubmit={this.onSubmit}>
+         <form class="modal-content animate"  action="/action_page.php" method="post" onSubmit={this.onSubmit}>
              <label>UsersEmail</label>
-             <Form.Field error={!!ErrorNotification.UsersEmail}>
                  <input>
                     type="UsersEmail"
                     id="UsersEmail"
@@ -51,11 +49,9 @@ class RegisterForm extends React.Component {
                     onChange={this.onChange}
                  </input>
                  {ErrorNotification.UsersEmail && <ErrorMessage text={ErrorNotification.UsersEmail} />}
-             </Form.Field>
              <label>
                  UsersPassword
              </label>
-             <Form.Field error={!!ErrorNotification.UsersPassword}>
                  <input>
                     type="UsersPassword"
                     id="UsersPassword"
@@ -72,17 +68,14 @@ class RegisterForm extends React.Component {
                  </label>
                  <br />
                  <br />
-                 <ButtonForm>
+                 <ButtonContainer>
                     Register
-                 </ButtonForm>
-             </Form.Field>
-         </Form>   
+                 </ButtonContainer>
+         </form>   
         );
     }
 }
 
-RegisterForm.PropTypes = {
+RegisterForm.propTypes = {
     submit: PropTypes.func.isRequired
 }
-
-export default RegisterForm

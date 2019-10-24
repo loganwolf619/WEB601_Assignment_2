@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import Title from '../..pageElements/Title'
+import Title from '../../pageElements/Title'
 import './EditUsers.css'
 
 export default class MyUsers extends React.Component {
@@ -105,7 +105,7 @@ export default class MyUsers extends React.Component {
             usersformIsValid = false 
             errors["UsersPassword"] = "Please enter your valid Password"
         }
-        if (typeof objects["UsersPassword"] !== "Undefined") {
+        if (!objects["UsersPassword"] !== "Undefined") {
             if (!objects["UsersPassword"].length >= 6) {
                 usersformIsValid = false
                 errors["UsersPassword"] = "Please enter a valid secured Password"

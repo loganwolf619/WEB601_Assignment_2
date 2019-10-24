@@ -1,9 +1,9 @@
 import React from 'react';
-import Title from './Title';
-import EditGraphicsToken from '../../pageElements/Title'
+import Title from '../../pageElements/Title';
+import EditGraphicsToken from '../../data/EditGraphics/EditGraphicsToken'
 import './EditGraphics.css'
 
-export default class EditGraphics extends Component {
+export default class EditGraphics extends React.Component {
     // We are going too create a constructor by using props. 
     // Props Get the value of a property for the first element in the set of matched elements or set one or more properties for every matched element.
     constructor(props) {

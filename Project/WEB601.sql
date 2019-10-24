@@ -1,14 +1,14 @@
 use apex_shutterbug;
-
--- drop table if exists Users;
--- drop table if exists Graphics;
--- drop table if exists SupportTeam;
+ 
+ drop table if exists SupportTeam;
+ drop table if exists Graphics;
+ drop table if exists Users;
 
 create table Users (
 UsersID int auto_increment not null,
 UsersFName varchar (100) not null,
 UsersLName varchar (100) not null,
-UsersEmail varchar (100) not null,
+UsersEmail varchar (100) unique not null,
 UsersPassword varchar (20) not null,
 UsersPhone varchar (20) not null,
 Primary Key (UsersID)
@@ -17,11 +17,11 @@ Primary Key (UsersID)
 -- use apex_shutterbug;
 create table Graphics (
 GraphicsID int auto_increment not null,
-GraphicsType varchar (50) not null,
+GraphicsType varchar (50),
 GraphicsQuality varchar (50),
 GraphicsTitle varchar (50),
 GraphicsArtist varchar (50),
-UsersID int not null,
+UsersID int,
 Primary Key (GraphicsID),
 Foreign Key (UsersID) References Users(UsersID) on delete cascade
 );

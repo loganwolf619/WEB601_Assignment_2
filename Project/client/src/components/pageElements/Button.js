@@ -41,7 +41,7 @@ transition:all 0.5s ease-in-out;
 }
 `;
 
-export const ButtonForm = styled.butoon`
+export const ButtonForm = styled.button`
 text-transform:capitalize;
 font-size:1.6rem;
 background: #4CAF50;

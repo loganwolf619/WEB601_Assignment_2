@@ -16,8 +16,7 @@
   background-color: var(--mainDark) !important;
 }
 
-/* This will be the part where we will be changing the body structure of the Website */
-body{
+.body{
 font-family: 'Satisfy', cursive !important;
 background: var(--mainWhite) !important;
 /* background: url("/desk1.jpg")!important; */
@@ -32,7 +31,7 @@ color:var(--mainDark) !important;
 
 /* This will be the part where we will be styling the Container */
 .container {
-  min-height: 70vh;
+  min-height: 100vh;
   background-color: var(--mainOrange) !important;
 }
 

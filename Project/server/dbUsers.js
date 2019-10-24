@@ -1,13 +1,13 @@
 // We are going to connect single users
 // We are going to retreive users using the users UsersEmail address.
-function listSingeUsers(req, res) {
+function listSingleUsers(req, res) {
     //We are going to access the database connection in config.js with the help of restful.js
     const { knex } = req.app.locals
     const { UsersEmail} = req.params
     // We are going to use the DB query based on the above condition
     knex
         .select('UsersEmail', 'UsersFName', 'UsersLName', 'UsersPhone', 'UsersPassword')
-        .from('Users')
+        .from('users')
         .where({
             UsersEmail: `${UsersEmail}`
         })
@@ -17,7 +17,7 @@ function listSingeUsers(req, res) {
             if (data.length > 0) {
                 return res.status(200).json(data)
             } else {
-                return res.status(404).json(`Users UsersEmail: $(UsersEmail) does not exist`);
+                return res.status(404).json(`Users UsersEmail: ${UsersEmail} does not exist`);
             }
         })
         // To catch any error 
@@ -52,7 +52,7 @@ function postUsers(req, res) {
     }
 }
 
-// We are going to update an user with the help of the users UsersEmail
+// // We are going to update an user with the help of the users UsersEmail
 function updateUsers(req, res) {
     // We are going to connct the database in the config.js with thw help of restful.js
     const { knex } = req.app.locals
@@ -75,7 +75,7 @@ function updateUsers(req, res) {
 
 // We are going to export all the function as the module object. 
 module.exports = {
-    listSingeUsers,
+    listSingleUsers,
     postUsers,
     updateUsers
 }

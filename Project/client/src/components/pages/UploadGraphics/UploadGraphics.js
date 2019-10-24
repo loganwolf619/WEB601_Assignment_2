@@ -15,7 +15,7 @@ export default class UploadGraphics extends React.Component {
     
         // We are going to use bind.
         // The bind() method creates a new function that, when called, has its this keyword set to the provided value, with a given sequence of arguments preceding any provided when the new function is called.
-        this.handleAnyChanges = this.handleAnyChanges.bind(this)
+        this.handleChange = this.handleChange.bind(this)
         this.uploadGraphics = this.uploadGraphics.bind(this)
         }
     
@@ -31,7 +31,7 @@ export default class UploadGraphics extends React.Component {
         // 
         uploadGraphics(e) {
             e.preventDefault()
-            if (this.validateForm()) {
+            if (this.validateGraphics()) {
                 let objects = {}
                 objects["GraphicsTitle"] = ""
                 objects["GraphicsArtist"] = ""
@@ -39,7 +39,7 @@ export default class UploadGraphics extends React.Component {
                 objects["GraphicsQuality"] = ""
                 this.setState({objects:objects})
               // We are trying to connect our database with the curre
-              fetch('http://localhost:4200/api/Users', {
+              fetch('http://localhost:4200/api/Graphics', {
                 method: 'post',
                 headers: {'Content-Type':'application/json'},
                 body: JSON.stringify({
@@ -55,7 +55,7 @@ export default class UploadGraphics extends React.Component {
             }
         }
         // Now, we will validate the Users form by ensuring that each object has been added and no object has been left empty
-        uploadGraphics() {
+        validateGraphics() {
           let objects = this.state.objects
           let errors = {}
           let graphicsUploadFormIsValid = true
@@ -95,8 +95,8 @@ export default class UploadGraphics extends React.Component {
               graphicsUploadFormIsValid = false 
               errors["GraphicsQuality"] = "Please enter your valid Password"
           }
-          if (typeof objects["GraphicsQuality"] !== "Undefined") {
-              if (!objects["GraphicsQuality"].match(/^[a-zA-Z]*$/) && (/^([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]*$/)) {
+          if (!objects["GraphicsQuality"] !== "Undefined") {
+              if (!objects["GraphicsQuality"].match(/^[a-zA-Z ]*$/)) {
                   graphicsUploadFormIsValid = false
                   errors["GraphicsQuality"] = "Please enter a valid secured Password"
               }
@@ -126,12 +126,12 @@ export default class UploadGraphics extends React.Component {
                         </div>
 
                         <div className="topLeftColumn">
-                            <input type="text" name="GraphicsTitle" id="Title" ref={(ref) => {this.GraphicsTitle=ref}} placeholder="Graphics Title is: " value={this.state.fields.GraphicsTitle} onChange={this.handleAnyChanges} />
+                            <input type="text" name="GraphicsTitle" id="GraphicsTitle" ref={(ref) => {this.GraphicsTitle = ref}} placeholder="Graphics Title is: " value={this.state.objects.GraphicsTitle} onChange={this.handleChange} />
                             <div className="errorNotification">
                                 {this.state.errors.GraphicsTitle}
                             </div>
                             <br/>
-                            <input type="text" name="GraphicsArtist" id="Artist" ref={(ref) => {this.GraphicsArtist=ref}} placeholder="Graphics Artist is: " value={this.state.fields.GraphicsArtist} onChange={this.handleAnyChanges} />
+                            <input type="text" name="GraphicsArtist" id="Artist" ref={(ref) => {this.GraphicsArtist=ref}} placeholder="Graphics Artist is: " value={this.state.objects.GraphicsArtist} onChange={this.handleChange} />
                         </div>
 
                         <div className="topRightUploadColumn">
@@ -145,12 +145,12 @@ export default class UploadGraphics extends React.Component {
                         </div>
 
                         <div className="topRightColumn">
-                            <input type="text" name="GraphicsType" id="Type" ref={(ref) => {this.GraphicsType=ref}} placeholder="Graphics Type is: " value={this.state.fields.GraphicsType} onChange={this.handleAnyChanges} />
+                            <input type="text" name="GraphicsType" id="Type" ref={(ref) => {this.GraphicsType=ref}} placeholder="Graphics Type is: " value={this.state.objects.GraphicsType} onChange={this.handleChange} />
                             <div className="errorNotification">
                                 {this.state.errors.GraphicsTitle}
                             </div>
                             <br/>
-                            <input type="text" name="GraphicsQuality" id="Quality" ref={(ref) => {this.GraphicsQuality=ref}} placeholder="Graphics Quality is: " value={this.state.fields.GraphicsQuality} onChange={this.handleAnyChanges} />
+                            <input type="text" name="GraphicsQuality" id="Quality" ref={(ref) => {this.GraphicsQuality=ref}} placeholder="Graphics Quality is: " value={this.state.objects.GraphicsQuality} onChange={this.handleChange} />
                         </div>
                         
                         <br/>

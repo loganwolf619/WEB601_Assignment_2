@@ -1,21 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {Switch,Route} from 'react-router-dom';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from'./components/Navbar'; 
-import Home from'./components/Home/Home';
-import ContactUs from'./components/ContactUs/ContactUs';
-import MyUsers from'./components/MyUsers';
+import Home from'./components/pages/Home/Home';
+import ContactUs from'./components/pages/ContactUs/ContactUs';
+import MyUsers from'./components/pages/MyUsers/MyUsers';
 import Default from './components/pages/Default'
 import BrowseGraphics from './components/pages/BrowseGraphics/Browse'
 import Footer from './components/Footer'
 import Login from './components/pages/Login/Login'
-import Register from'./components/Register/Register';
+import Register from'./components/pages/Register/Register';
 import MyGraphics from './components/pages/MyGraphics/MyGraphics';
-import UploadGraphics from'./components/pages/UploadGraphics';
-import EditUsers from'./components/EditUsers/EditUsers';
+import UploadGraphics from'./components/pages/UploadGraphics/UploadGraphics';
+import EditUsers from'./components/pages/EditUsers/EditUsers';
 import EditGraphics from './components/pages/EditGraphics/EditGraphics';
-import AboutUs from'./components/AboutUs/AboutUs';
+import AboutUs from'./components/pages/AboutUs/AboutUs';
 // import Designs from'./components/childPages/Designs';
 // import Illustrations from'./components/childPages/Illustrations';
 // import Photos from'./components/childPages/Photos';

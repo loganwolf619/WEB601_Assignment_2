@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import Title from '../../pageElements/Title';
-import DisplayUsers from '../../data/DisplayUsers';
+import DisplayUsers from '../../data/DisplayUsers/DisplayUsersToken';
 import './MyUsers.css';
 
 export default class MyUsers extends React.Component {

@@ -16,14 +16,14 @@ export default class MyGraphics extends React.Component {
         // Next, we are going to connect the Database with the JSON file, so that if any chnages that has been made will change our database record.
         // The controller is trying to fetch the information to update the database record
         deleteGraphics(GraphicsID) {
-            fetch('https://localhost:3306/api/Graphics/' + GraphicsID, {
+            fetch('http://localhost:4200/api/Graphics/' + GraphicsID, {
                 method: 'delete'
             }).then(response => response.json().then(json => {
                 return json
             })
         )
         // The reload() method is used to reload the current document. Here, we are going to reload any chnages that has been made.
-        windows.location.reload()
+        window.location.reload()
     }
     // The purpose of render() method,is to return the HTML. In this reagrd, we are going to return or render the Graphics
 
@@ -39,26 +39,22 @@ export default class MyGraphics extends React.Component {
                         <h3>
                             {Graphics.GraphicsTitle}
                         </h3>
-                        <input className="graphicsViewer" type="test" />
                         <div className="graphicsType">
                             <h3>
                                 {Graphics.GraphicsType}
                             </h3>
                         </div>
-                        <div className="graphicsArtist">
+                        <div className="graphicsType">
                             <h3>
                                 {Graphics.GraphicsArtist}
                             </h3>
                         </div>
-                        <div className="graphicsQuality">
+                        <div className="graphicsType">
                             <h3>
                                 {Graphics.GraphicsQuality}
                             </h3>
                         </div>
-                        <Link Graphics={Graphics.GraphicsID} to ='./EditGraphics'>
-                            <input type="button" className="editButton" value="Graphics Edit" />                      
-                        </Link>
-                        <input type="button" className="deleteButton" value="Graphics Delete" onClick={this.deleteGraphics.bind(this.Graphics.GraphicsID)} />
+                        <input type="button" className="deleteButton" value="Graphics Delete" onClick={this.deleteGraphics.bind(this,Graphics.GraphicsID)} />
                     </div>
                 ))}
             </div>

@@ -2,6 +2,7 @@
     display: flex;
     flex-wrap: wrap;
     padding: 0 4px;
+
 }
 .button {
     background-color: #4CAF50; /* Green */
@@ -40,29 +41,15 @@
     text-align: center;
     padding: 30px;
     margin: 5px;
-    width: 25%;
-    background-color: beige;
+    height: 200px;
+    width: 200px;
+    background-color: greenyellow;
     border-radius: 6px;
     box-shadow: 3px 6px;
     text-shadow: 2px 2px 2px rgb(27, 5, 48);
+    font-size: xx-small !important;
 }
 
-.graphicsType {
-    float: left;
-    box-shadow: 3px 6px;
-    text-shadow: 2px 2px 2px rgb(11, 156, 161);
-}
-
-.graphicsArtist {
-    float: right;
-    box-shadow: 3px 6px;
-    text-shadow: 2px 2px 2px rgb(219, 7, 71);
-}
-.graphicsQuality {
-    float: center;
-    box-shadow: 3px 6px;
-    text-shadow: 2px 2px 2px rgb(11, 236, 41);
-}
 
 .graphicsViewer {
     float: center;

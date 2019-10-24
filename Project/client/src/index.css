@@ -2,20 +2,30 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+    sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+    monospace !important;
 }
 p{
   color: red !important;
 }
-h1,h2, h3, h4, h5 {
+h3, h4, h5 {
   color: darkblue !important;
+  font-size: x-small;
+}
+
+h1 {
+  color: darkred !important;
+  font-size: large;
+}
+h2 {
+  color: solid black !important;
+  font-size: medium;
 }
 .show>.dropdown-menu {
   display: block;
@@ -23,7 +33,11 @@ h1,h2, h3, h4, h5 {
 }
 
 .navbar {
-  background-color: yellowgreen;
+  background-color: yellowgreen !important;
+  text-align: left !important;
+  margin: 2px !important;
+  border: 3px !important;
+  
 }
 .navbar .navbar-brand:hover{
   color: black ;

@@ -5,7 +5,7 @@ const ErrorMessage = ({ text }) => (
     <span style={{ color: "Red" }} >{text}</span>
 );
 
-ErrorMessage.PropTypes = {
+ErrorMessage.propTypes = {
     text: PropTypes.string.isRequired
 };
 

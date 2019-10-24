@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './BrowseGraphics/BrowseGraphicsToken.css'
+import './BrowseGraphicsToken.css'
 
 
 export default class Graphics extends React.Component {

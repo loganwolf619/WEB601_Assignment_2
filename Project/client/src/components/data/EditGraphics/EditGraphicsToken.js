@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React from 'react'
 import {Link} from 'react-router-dom'
-import './EditGraphics.EditGraphicsToken.css'
+import './EditGraphicsToken.css'
 
 export default class MyGraphics extends React.Component {
     //Sometimes we need a "blueprint" for creating many objects of the same "type". The way to create an "object type", is to use an object constructor function.
@@ -24,7 +24,7 @@ export default class MyGraphics extends React.Component {
     // Now, we are going to apply updates to any properties based on any changes made by the user using GUI
     handlanyChanges(Changes) {
         let objects = this.state.objects
-        objects[Changes.target.name] = e.target.value
+        objects[Changes.target.name] = Changes.target.value
         this.setState({
             objects
         })

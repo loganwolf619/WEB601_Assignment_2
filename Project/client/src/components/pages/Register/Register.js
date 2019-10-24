@@ -3,7 +3,7 @@ import Title from '../../pageElements/Title';
 import './Register.css';
 
 
-export class Register extends React.Component {
+export default class Register extends React.Component {
     
     // We are going too create a constructor by using props. 
     // Props Get the value of a property for the first element in the set of matched elements or set one or more properties for every matched element.
@@ -16,7 +16,7 @@ export class Register extends React.Component {
 
     // We are going to use bind.
     // The bind() method creates a new function that, when called, has its this keyword set to the provided value, with a given sequence of arguments preceding any provided when the new function is called.
-    this.handleAnyChanges = this.handleAnyChanges.bind(this)
+    this.handleChange = this.handleChange.bind(this)
     this.submitUsersRegistration = this.submitUsersRegistration.bind(this)
     }
 
@@ -102,8 +102,8 @@ export class Register extends React.Component {
           usersformIsValid = false 
           errors["UsersPassword"] = "Please enter your valid Password"
       }
-      if (typeof objects["UsersPassword"] !== "Undefined") {
-          if (!objects["UsersPassword"].length >= 6) {
+      if (!objects["UsersPassword"] !== "Undefined") {
+          if (!objects["UsersPassword"].length >= 12) {
               usersformIsValid = false
               errors["UsersPassword"] = "Please enter a valid secured Password"
           }
