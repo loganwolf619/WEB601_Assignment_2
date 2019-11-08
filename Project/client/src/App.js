@@ -1,7 +1,6 @@
 import React from 'react';
 import {Switch,Route} from 'react-router-dom';
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from'./components/Navbar'; 
 import Home from'./components/pages/Home/Home';
 import ContactUs from'./components/pages/ContactUs/ContactUs';

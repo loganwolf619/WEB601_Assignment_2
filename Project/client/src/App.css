@@ -12,27 +12,28 @@
 }
 /* This will be the header for the website */
 .header {
-  height:16vh;
   background-color: var(--mainDark) !important;
 }
 
 .body{
-font-family: 'Satisfy', cursive !important;
+font-family: 'sarif', cursive !important;
 background: var(--mainWhite) !important;
 /* background: url("/desk1.jpg")!important; */
 color:var(--mainDark) !important;
 }
 /* This will be the part where we will Styling the Footer */
 .footer {
-  height: 16vh;
-  background-color: var(--mainDark) !important;
+  height: 15vh;
+  background-color: darkgoldenrod;
   clear: both;
 }
 
 /* This will be the part where we will be styling the Container */
 .container {
-  min-height: 100vh;
-  background-color: var(--mainOrange) !important;
+  min-height: 70vh;
+  background-color: lightskyblue;
+  max-width: 1920px !important;
+  padding: 1px;
 }
 
 
