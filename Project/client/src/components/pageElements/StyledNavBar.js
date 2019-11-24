@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 
-export const NavWrapper = styled.nav`
+export const Navbar = styled.nav`
 background-color: var(--mainBlue) !important;
 .nav-link{
 color:var(mainOrange) !important;

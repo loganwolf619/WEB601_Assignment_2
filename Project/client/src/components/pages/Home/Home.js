@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {ButtonContainer} from '../../pageElements/Button';
+import {BtnContainer} from '../../pageElements/Button';
 import './Home.css';
 import GraphicsDisplayToken from '../../data/GraphicsDisplay/GraphicsDisplayToken';
 //import Footer from '../../Footer';
@@ -53,9 +53,9 @@ export default class Home extends React.Component {
                     </div>
                     <div className="updateAction">
                         <Link to="/UploadGraphisc">
-                            <ButtonContainer>
+                            <BtnContainer>
                                 Upload Graphis
-                            </ButtonContainer>
+                            </BtnContainer>
                         </Link>
                     </div>
                 </div>

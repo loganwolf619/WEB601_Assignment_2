@@ -3,30 +3,18 @@ import {Switch,Route} from 'react-router-dom';
 import './App.css';
 import Navbar from'./components/Navbar'; 
 import Home from'./components/pages/Home/Home';
-import ContactUs from'./components/pages/ContactUs/ContactUs';
+import ContactUs from'./components/pages/ContactUs';
 import MyUsers from'./components/pages/MyUsers/MyUsers';
-import Default from './components/pages/Default'
-import BrowseGraphics from './components/pages/BrowseGraphics/Browse'
-import Footer from './components/Footer'
-import Login from './components/pages/Login/Login'
-import Register from'./components/pages/Register/Register';
+import Default from './components/pages/Default';
+import BrowseGraphics from './components/pages/BrowseGraphics/Browse';
+import Footer from './components/Footer/Footer';
+import {Login} from './components/pages/Login';
+import {Register} from'./components/pages/Register';
 import MyGraphics from './components/pages/MyGraphics/MyGraphics';
 import UploadGraphics from'./components/pages/UploadGraphics/UploadGraphics';
 import EditUsers from'./components/pages/EditUsers/EditUsers';
 import EditGraphics from './components/pages/EditGraphics/EditGraphics';
 import AboutUs from'./components/pages/AboutUs/AboutUs';
-// import Designs from'./components/childPages/Designs';
-// import Illustrations from'./components/childPages/Illustrations';
-// import Photos from'./components/childPages/Photos';
-
-
-
-// import Message from'./components/Messsage';
-
-
-
-
-
 
 const App = () => (
   <div className="container">

@@ -1,8 +1,8 @@
 
-import React, { Component } from 'react';
+import React from 'react';
 import {Link} from 'react-router-dom';
-import {ButtonContainer, ButtonLoad} from "./pageElements/Button";
-import {NavWrapper} from "./pageElements/StyledNavBar";
+import {BtnContainer} from "./pageElements/Button";
+import {Navbar} from "./pageElements/StyledNavBar";
 import './Navbar.css';
 import React, { useState } from 'react';
 import {BtnContainer} from './pageElements/Buttons'

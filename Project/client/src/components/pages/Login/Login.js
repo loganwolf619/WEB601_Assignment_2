@@ -83,7 +83,7 @@ class LoginPage extends React.Component {
                     </div>
                     <br />
                     <div className="form-group">
-                      <ButtonContainer primary className="buttonLogin">Login</ButtonContainer>
+                      <Button primary className="buttonLogin">Login</Button>
                       <Link to="/Register" className="button">Register</Link>
                     </div>
                   </Form>      

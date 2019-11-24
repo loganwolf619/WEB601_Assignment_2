@@ -1,6 +1,6 @@
 import React from 'react'
 import Title from '../../pageElements/Title';
-import {ButtonLoad} from '../../pageElements/Button';
+import {BtnContainer} from '../../pageElements/Button';
 import './UploadGraphics.css';
 
 export default class UploadGraphics extends React.Component {
@@ -157,12 +157,12 @@ export default class UploadGraphics extends React.Component {
                         <br/>
                         
                         <div className="buttonUploadGraphics">
-                            <ButtonLoad>
+                            <BtnContainer>
                                 Upload Graphics
-                            </ButtonLoad>
-                            <ButtonLoad>
+                            </BtnContainer>
+                            <BtnContainer>
                                 Browse Graphics
-                            </ButtonLoad>
+                            </BtnContainer>
                         </div>
                     </form>
                 </div>
