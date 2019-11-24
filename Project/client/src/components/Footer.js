@@ -1,20 +1,46 @@
 import React, {Component} from 'react'
 import './Footer.css'
+import {Link} from 'react-router-dom'
 
-export default class Footer extends Component {
-    render() {
-        return(
-            <div className="footerContainer">
-                <div className="credits">
-                    Credit Icons dedicated 
-                    <span className="glyphicon glyphicon-icon" aria-hidden="true">
-                        <a href="https://www.flaticon.com/packs/general-arts-27" title="Freepik">General Arts from</a>
-                        <a href="https://www.flaticon.com/" title="Flaticons"> Licensed by </a>
-                        <a href="https://www.creativecommons.org/licenses/by/3.0" title="Creative Commons"> Creative Commons by 3.0</a>
-                    </span>
-                    
-                </div>
-            </div>
-        )
-    }
+const Footer = () => {
+  <footer className="page-footer font-small special-color-dark pt-4">
+  
+    <div className="Footercontainer">
+  
+      <ul className="list-unstyled list-inline text-center">
+        <li className="list-inline-item">
+          <a className="btn-floating btn-fb mx-1">
+            <i className="fab fa-facebook-f"> </i>
+          </a>
+        </li>
+        <li className="list-inline-item">
+          <a className="btn-floating btn-tw mx-1">
+            <i className="fab fa-twitter"> </i>
+          </a>
+        </li>
+        <li className="list-inline-item">
+          <a className="btn-floating btn-gplus mx-1">
+            <i className="fab fa-google-plus-g"> </i>
+          </a>
+        </li>
+        <li className="list-inline-item">
+          <a className="btn-floating btn-li mx-1">
+            <i className="fab fa-linkedin-in"> </i>
+          </a>
+        </li>
+        <li className="list-inline-item">
+          <a className="btn-floating btn-dribbble mx-1">
+            <i className="fab fa-dribbble"> </i>
+          </a>
+        </li>
+      </ul>
+  
+    </div>
+  
+    <div claclassNamess="footer-copyright text-center py-3">© 2018 Copyright:
+      <a href="#!"> Apex ShutterBug</a>
+    </div>
+
+  </footer>
 }
+  export default Footer;

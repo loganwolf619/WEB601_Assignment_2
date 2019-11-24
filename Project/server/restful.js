@@ -14,7 +14,7 @@ const jsonParser = bodyParser.json()
 
 // We are going use the KNEX to connect with our MySQL database
 const knex = require('knex')({
-  client: 'mysql',
+  client: 'mysql',0
   connection: config.database
 })
 
@@ -26,35 +26,38 @@ const routes = require('./routes')
 
 //We are now going to create route for each request type. We are going to use the ID to retreive the data.
 
-// We are going to use the routes to get all the Graphics
-router.get('/Graphics', routes.graphicsList.listAllGraphics);
+// We are going to use the routes to get all the graphics
+router.get('/graphics', routes.graphicsList.listAllGraphics);
 
-// We are going to obtain single Graphics based on the GraphicsID
-router.get('/Graphics/:GraphicsID', middleware.checkID, routes.graphicsList.listSingleGraphics);
+// We are going to obtain single graphics based on the GraphicsID
+router.get('/graphics/:GraphicsID', middleware.checkID, routes.graphicsList.listSingleGraphics);
 
-// // We are going to display the recent Graphics that has been added to be published
+// // We are going to display the recent graphics that has been added to be published
 router.get('/GraphicsDisplay', routes.graphicsList.listGraphicsDisplay)
 
-// We are going to create a route to POST a new Graphics by creating  a new record in the database
-router.post('/Graphics', jsonParser, routes.graphicsList.postGraphics);
+// We are going to create a route to POST a new graphics by creating  a new record in the database
+router.post('/graphics', jsonParser, routes.graphicsList.postGraphics);
 
-// We are going to Update or patch the existing Graphics in the database if needed
-router.patch('/Graphics/:GraphicsID', jsonParser, middleware.checkID, routes.graphicsList.updateGraphics)
+// We are going to Update or patch the existing graphics in the database if needed
+router.put('/graphics/:GraphicsID', jsonParser, middleware.checkID, routes.graphicsList.updateGraphics)
 
 // We are going to Delete a graphics from the database
-router.delete('/Graphics/:GraphicsID', middleware.checkID, routes.graphicsList.deleteGraphics)
+router.delete('/graphics/:GraphicsID', middleware.checkID, routes.graphicsList.deleteGraphics)
 
 // // We are going to route to POST a new Contact 
 router.post('/SupportTeam', jsonParser, routes.supportTeam.postSupportTeam)
 
-// // We are going to retrieve a Users information using the Users Email
-router.get('/Users/:UsersEmail', routes.users.listSingleUsers)
+// // We are going to retrieve a users information using the users Email
+router.get('/users/:UsersEmail', routes.users.listSingleUsers)
 
-// // We are going to route to POST to the newly connected Users
-router.post('/Users', jsonParser, routes.users.postUsers)
+// // We are going to route to POST to the newly connected users
+router.post('/users', jsonParser, routes.users.postUsers)
 
-// // We are going to route tp update the existing Users
-router.put('/Users/:UsersEmail', jsonParser, routes.users.updateUsers)
+// // We are going to route tp update the existing users
+router.put('/users/:UsersEmail', jsonParser, routes.users.updateUsers)
+
+// // We are going to publish the user's login details
+router.post('/users', jsonParser, routes.users.validateUsers)
 
 // We are going to use Express to route between the requested host and route
 app.use('/api', cors(), router);

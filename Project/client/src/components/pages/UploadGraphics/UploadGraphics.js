@@ -9,7 +9,7 @@ export default class UploadGraphics extends React.Component {
     constructor() {
         super()
         this.state = {
-            objects: {GraphicsTitle: '', GraphicsArtist: '', GraphicsType: '', GraphicsQuality: ''},
+            fields: {GraphicsTitle: '', GraphicsArtist: '', GraphicsType: '', GraphicsQuality: ''},
             errors: {}
         }
     
@@ -21,10 +21,10 @@ export default class UploadGraphics extends React.Component {
     
         // Method to update the properties state upon any change made by the user to a UI property.
         handleChange(e) {
-            let objects = this.state.objects
-            objects[e.target.name] = e.target.value
+            let fields = this.state.fields
+            fields[e.target.name] = e.target.value
             this.setState({
-                objects
+                fields
             })
         }
     
@@ -32,12 +32,12 @@ export default class UploadGraphics extends React.Component {
         uploadGraphics(e) {
             e.preventDefault()
             if (this.validateGraphics()) {
-                let objects = {}
-                objects["GraphicsTitle"] = ""
-                objects["GraphicsArtist"] = ""
-                objects["GraphicsType"] = ""
-                objects["GraphicsQuality"] = ""
-                this.setState({objects:objects})
+                let fields = {}
+                fields["GraphicsTitle"] = ""
+                fields["GraphicsArtist"] = ""
+                fields["GraphicsType"] = ""
+                fields["GraphicsQuality"] = ""
+                this.setState({fields:fields})
               // We are trying to connect our database with the curre
               fetch('http://localhost:4200/api/Graphics', {
                 method: 'post',
@@ -56,47 +56,47 @@ export default class UploadGraphics extends React.Component {
         }
         // Now, we will validate the Users form by ensuring that each object has been added and no object has been left empty
         validateGraphics() {
-          let objects = this.state.objects
+          let fields = this.state.fields
           let errors = {}
           let graphicsUploadFormIsValid = true
           
-          if(!objects["GraphicsTitle"]) {
+          if(!fields["GraphicsTitle"]) {
               graphicsUploadFormIsValid = false 
               errors["GraphicsTitle"] = "Please enter your valid Graphics Title"
           }
     
-          if(!objects["GraphicsTitle"] !== "Undefined") {
-              if(!objects["GraphicsTitle"].match(/^[a-zA-Z]*$/)) {
+          if(!fields["GraphicsTitle"] !== "Undefined") {
+              if(!fields["GraphicsTitle"].match(/^[a-zA-Z]*$/)) {
                   errors["GraphicsTitle"] = "Please Enter only alphabets to enter correct Graphics Title"
               }
           }
-          if(!objects["GraphicsArtist"]) {
+          if(!fields["GraphicsArtist"]) {
               graphicsUploadFormIsValid = false 
               errors["GraphicsArtist"] = "Please enter your valid Artist Name"
           }
     
-          if(!objects["GraphicsArtist"] !== "Undefined") {
-              if(!objects["GraphicsArtist"].match(/^[a-zA-Z]*$/)) {
+          if(!fields["GraphicsArtist"] !== "Undefined") {
+              if(!fields["GraphicsArtist"].match(/^[a-zA-Z]*$/)) {
                   errors["GraphicsArtist"] = "Please Enter only alphabets to enter correct Artist Name"
               }
           }
-          if(!objects["GraphicsType"]) {
+          if(!fields["GraphicsType"]) {
               graphicsUploadFormIsValid = false 
               errors["GraphicsType"] = "Please enter valid Graphics Type"
           }
     
-          if(!objects["GraphicsType"] !== "Undefined") {
-            if(!objects["GraphicsType"].match(/^[a-zA-Z]*$/)) {
+          if(!fields["GraphicsType"] !== "Undefined") {
+            if(!fields["GraphicsType"].match(/^[a-zA-Z]*$/)) {
                 errors["GraphicsType"] = "Please Enter only alphabets to enter Graphics Type"
             }
         }
 
-          if(!objects["GraphicsQuality"]) {
+          if(!fields["GraphicsQuality"]) {
               graphicsUploadFormIsValid = false 
               errors["GraphicsQuality"] = "Please enter your valid Password"
           }
-          if (!objects["GraphicsQuality"] !== "Undefined") {
-              if (!objects["GraphicsQuality"].match(/^[a-zA-Z ]*$/)) {
+          if (!fields["GraphicsQuality"] !== "Undefined") {
+              if (!fields["GraphicsQuality"].match(/^[a-zA-Z ]*$/)) {
                   graphicsUploadFormIsValid = false
                   errors["GraphicsQuality"] = "Please enter a valid secured Password"
               }
@@ -126,12 +126,12 @@ export default class UploadGraphics extends React.Component {
                         </div>
 
                         <div className="topLeftColumn">
-                            <input type="text" name="GraphicsTitle" id="GraphicsTitle" ref={(ref) => {this.GraphicsTitle = ref}} placeholder="Graphics Title is: " value={this.state.objects.GraphicsTitle} onChange={this.handleChange} />
+                            <input type="text" name="GraphicsTitle" id="GraphicsTitle" ref={(ref) => {this.GraphicsTitle = ref}} placeholder="Graphics Title is: " value={this.state.fields.GraphicsTitle} onChange={this.handleChange} />
                             <div className="errorNotification">
                                 {this.state.errors.GraphicsTitle}
                             </div>
                             <br/>
-                            <input type="text" name="GraphicsArtist" id="Artist" ref={(ref) => {this.GraphicsArtist=ref}} placeholder="Graphics Artist is: " value={this.state.objects.GraphicsArtist} onChange={this.handleChange} />
+                            <input type="text" name="GraphicsArtist" id="Artist" ref={(ref) => {this.GraphicsArtist=ref}} placeholder="Graphics Artist is: " value={this.state.fields.GraphicsArtist} onChange={this.handleChange} />
                         </div>
 
                         <div className="topRightUploadColumn">
@@ -145,20 +145,23 @@ export default class UploadGraphics extends React.Component {
                         </div>
 
                         <div className="topRightColumn">
-                            <input type="text" name="GraphicsType" id="Type" ref={(ref) => {this.GraphicsType=ref}} placeholder="Graphics Type is: " value={this.state.objects.GraphicsType} onChange={this.handleChange} />
+                            <input type="text" name="GraphicsType" id="Type" ref={(ref) => {this.GraphicsType=ref}} placeholder="Graphics Type is: " value={this.state.fields.GraphicsType} onChange={this.handleChange} />
                             <div className="errorNotification">
                                 {this.state.errors.GraphicsTitle}
                             </div>
                             <br/>
-                            <input type="text" name="GraphicsQuality" id="Quality" ref={(ref) => {this.GraphicsQuality=ref}} placeholder="Graphics Quality is: " value={this.state.objects.GraphicsQuality} onChange={this.handleChange} />
+                            <input type="text" name="GraphicsQuality" id="Quality" ref={(ref) => {this.GraphicsQuality=ref}} placeholder="Graphics Quality is: " value={this.state.fields.GraphicsQuality} onChange={this.handleChange} />
                         </div>
                         
                         <br/>
                         <br/>
                         
-                        <div className="button hover">
+                        <div className="buttonUploadGraphics">
                             <ButtonLoad>
                                 Upload Graphics
+                            </ButtonLoad>
+                            <ButtonLoad>
+                                Browse Graphics
                             </ButtonLoad>
                         </div>
                     </form>

@@ -3,10 +3,10 @@
 function listSingleUsers(req, res) {
     //We are going to access the database connection in config.js with the help of restful.js
     const { knex } = req.app.locals
-    const { UsersEmail} = req.params
+    const { UsersEmail } = req.params
     // We are going to use the DB query based on the above condition
     knex
-        .select('UsersEmail', 'UsersFName', 'UsersLName', 'UsersPhone', 'UsersPassword')
+        .select('UsersFName', 'UsersEmail','UsersLName', 'UsersPhone', 'UsersPassword')
         .from('users')
         .where({
             UsersEmail: `${UsersEmail}`
@@ -30,22 +30,24 @@ function listSingleUsers(req, res) {
 //We are going to add a user to the database
 function postUsers(req, res) {
     const { knex } = req.app.locals
+
     const payload = req.body
 
     // We are goign to parse the payload, and this is the parameters that has been sent from the client
-    const manadatoryColumns = ['UsersFName', 'UsersLName', 'UsersEmail', 'UsersPassword', 'UsersPhone']
+    const manadatoryColumns = ['UsersFName', 'UsersEmail','UsersLName', 'UsersPhone', 'UsersPassword']
+
     const payloadKeys = Object.keys(payload)
+
     const manadatoryColumnsExists = manadatoryColumns.every(mc => payloadKeys.includes(mc))
 
     // We are going to check if all the mandatory columns are filled before they are posted. If they arent, then an error will be returned
-    if(manadatoryColumnsExists) {
+    if (manadatoryColumnsExists) {
         knex('users')
         .insert(payload)
         .then(response => {
             if (response) {
                 res.status(201).json('An User has been created')
-            }
-        })
+            }})
         .catch(error => res.status(500).json(error))
     } else {
         return res.status(400).json(`Mandatory Columns are required ${mandatoryColumns}`);
@@ -56,14 +58,16 @@ function postUsers(req, res) {
 function updateUsers(req, res) {
     // We are going to connct the database in the config.js with thw help of restful.js
     const { knex } = req.app.locals
+
     const { UsersEmail } = req.params
+
     const payload = req.body
 
-    knex('Users')
+    knex('users')
         .where('UsersEmail', UsersEmail)
         .update(payload)
         .then(response => {
-            if (respnse) {
+            if (response) {
                 res.status(200).json(`Users email: ${UsersEmail} has been updated`)
             } else {
                 return res.status(404).json(`Users Email: ${UsersEmail} hasn't been found`)
@@ -73,9 +77,29 @@ function updateUsers(req, res) {
         .catch(error => res.status(500).json(error))
 }
 
+function validateUsers(req, res) {
+    const { knex } = req.app.locals
+    const { UsersEmail, UsersPassword} = req.body
+    knex('users')
+        .where('UsersEmail', UsersEmail)
+        .where('UsersPassword', UsersPassword)
+        .fetch()
+        .then(users => {
+            if (users)
+            {
+                res.status(200).json(`Users Email: ${UsersEmail} has been updated`)
+            }
+            else
+            {
+                return res.status(404).json({ errors: { form: 'Invalid Informatio'}});
+            }
+        })
+
+}
 // We are going to export all the function as the module object. 
 module.exports = {
     listSingleUsers,
     postUsers,
-    updateUsers
+    updateUsers,
+    validateUsers
 }

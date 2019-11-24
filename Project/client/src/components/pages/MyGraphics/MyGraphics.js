@@ -40,9 +40,24 @@ export default class MyGraphics extends React.Component {
     render() {
         return(
             <div className="myGraphicsContainer">
-                <div className="listGraphicsType">
-                    
+                <div className="listGraphicsType">                    
                     <br/>
+                    <h3>List of Graphics type</h3>
+                    <ul>
+                        <li>Graphics Type 1</li>
+                        <br/>
+                        <li>Graphics Type 2</li>
+                        <br/>
+                        <li>Graphics Type 3</li>
+                        <br/>
+                        <li>Graphics Type 4</li>
+                        <br/>
+                        <li>Graphics Type 5</li>
+                        <br/>
+                        <li>Graphics Type 6</li>
+                        <br/>
+                        <li>Graphics Type 7</li>
+                    </ul>
                 </div>
                 <div className="myGraphicsColumn">
                         <Title name="My" title="Graphics" />

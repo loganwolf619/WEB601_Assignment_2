@@ -1,59 +1,100 @@
+
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import {ButtonContainer, ButtonLoad} from "./pageElements/Button";
 import {NavWrapper} from "./pageElements/StyledNavBar";
-import './Navbar.css'
-import DropDown from './pageElements/DropDown';
+import './Navbar.css';
+import React, { useState } from 'react';
+import {BtnContainer} from './pageElements/Buttons'
+import {
+  Merge,
+  Navbar,
+  NavbarScroller,
+  NavbarApex,
+  Nav,
+  NavItem,
+  NavigationDropdown,
+  NavbarToggle,
+  DropdownMenu,
+  NavbarDropDownList } 
+  from 'reactstrap';
+ import './Navbar.css'
 
 
-export default class Navbar extends Component {
-    render() {
-        return (
-            <div className="websiteWrapper">
-              <div className="container">
-                <div className="subcontainer">
-                  <Link to="/">
-                      Apex ShutterBug
-                  </Link>
-                </div>
-                <div className="subcontainer">
-                  <Link to="/browsegraphics">
+const Menu = () => {
+  const [allowsAccess, activeAccess] = useState(false);
+
+  const toggle = () => activeAccess(!allowsAccess);
+
+  return (
+    <div>
+      <Navbar dark expand="md">
+        <NavbarApex href="/" className="apexlogo-container">                        
+            <img src='../../icons/Logo.JPG' alt="designWebsite" className="logo-navbar"/>
+        </NavbarApex>
+        <NavItem>
+            <h1 className="navBarBrand"><strong>Design and Illustration</strong></h1>
+        </NavItem>
+        <NavbarScroller light onClick={toggle} />
+        <Merge allowsAccess={allowsAccess} navbar>
+          <Nav className="autoNavbar" navbar>
+            <NavItem className="linkContainer">
+                <Link to="/Browse" className="navBarLink">
                     Browse Graphics
-                  </Link>
-                  <div className="subcontainer">
-                  <Link to="/contactus">
-                      Contact US
-                  </Link>
-                </div>
-                <div className="subcontainer">
-                  <Link to="/uploadgraphics">
-                     Upload
-                  </Link>
-                </div>
-                <div className="subcontainer">
-                  <Link to="/login">
-                    Login
-                  </Link>
-                </div>          
-                   <div className="subcontainer">
-                  <Link to="/mygraphics">
-                    My Graphics
-                  </Link>
-                </div>
-                <div className="subcontainer">
-                  <Link to="/register">
-                    Register
-                  </Link>
-                  <div className="subcontainer">
-                  <Link to="/myusers">
-                      My Users
-                  </Link>
-                </div>
-
-                </div>
-                </div>
-              </div>
-            </div>
-        )
-    }
+                </Link>
+            </NavItem>
+            <NavItem className="linkContainer">
+                <Link to="/ContactUs" className="navBarLink">
+                    Contact Us
+                </Link>
+            </NavItem>
+            <NavigationDropdown nav ifNavBarTrue>
+              <NavbarToggle nav caret className="dropDown">
+                <span className="navBarLink">Users</span>
+              </NavbarToggle>
+              <DropdownMenu className="dropdownBackground" left>
+                <NavbarDropDownList>
+                    <Link to="/MyUsers" className="dropDownLink">
+                        My Users
+                    </Link>
+                </NavbarDropDownList>
+                <NavbarDropDownList>
+                    <Link to="/UploadGraphics" className="dropDownLink">
+                        Upload Graphics
+                    </Link>
+                </NavbarDropDownList>
+                <NavbarDropDownList>
+                    <Link to="/MyGraphics" className="dropDownLink">
+                        My Graphics
+                    </Link>
+                </NavbarDropDownList>
+                <NavbarDropDownList divider />
+                <NavbarDropDownList>
+                    <Link to="/" className="dropDownLink">
+                        Sign Out
+                    </Link>
+                </NavbarDropDownList>
+              </DropdownMenu>
+            </NavigationDropdown>
+            <NavItem className="navButtons">
+                <Link to="/Login">
+                    <BtnContainer>
+                        <span>Login</span>
+                    </BtnContainer>
+                </Link>
+            </NavItem>
+            <NavItem className="navButtons">
+                <Link to="/Register">
+                    <BtnContainer>
+                        <span>Register</span>
+                    </BtnContainer>
+                </Link>
+            </NavItem>
+          </Nav>
+        </Merge>
+      </Navbar>
+    </div>
+  );
 }
+
+export default Menu;

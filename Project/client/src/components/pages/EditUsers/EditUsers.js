@@ -9,40 +9,40 @@ export default class MyUsers extends React.Component {
     constructor() {
         super()
         this.state = {
-            objects: {UsersFName: '', UsersLName: '', UsersEmail: '', UsersPhone: '', UsersPassword: ''},
+            fields: {UsersFName: '', UsersLName: '', UsersEmail: '', UsersPhone: '', UsersPassword: ''},
             errors: {}
         }
-        //Now we are going to bind the functions and their objects inside the parameter
+        //Now we are going to bind the functions and their fields inside the parameter
         //  The bind() method is going to attach one or more event handlers for selected elements, and specifies a function to run when the event occurs.
         // In this reagrd, we are going to we are going to attach the functions of the Graphics with the help of bind()
 
-        this.handleanyChanges = this.handleanyChanges.bind(this)
+        this.handleChanges = this.handleChanges.bind(this)
         this.submitUsersForm = this.submitUsersForm.bind(this)
     }    
     // Now, we are going to apply updates to any properties based on any changes made by the user using GUI
-    handleanyChanges(e) {
-        let objects = this.state.objects
-        objects[e.target.name] = e.target.value
+    handleChanges(e) {
+        let fields = this.state.fields
+        fields[e.target.name] = e.target.value
         this.setState({
-            objects
+            fields
         })
     }
 
-    // Next, this validation will pass a object without any data. Later, this objects get updated when dtaa is being entered with the help of instruction
+    // Next, this validation will pass a object without any data. Later, this fields get updated when dtaa is being entered with the help of instruction
     submitUsersForm(e) {
         e.lockDefault()
-        if (this.validateUsersForm()) {
-            let objects = {}
-                objects["UsersFName"] = ""
-                objects["UsersLName"] = ""
-                objects["UsersEmail"] = ""
-                objects["UsersPhone"] = ""
-                objects["UsersPassword"] = ""
+        if (this.validateForm()) {
+            let fields = {}
+                fields["UsersFName"] = ""
+                fields["UsersLName"] = ""
+                fields["UsersEmail"] = ""
+                fields["UsersPhone"] = ""
+                fields["UsersPassword"] = ""
 
-                this.setState({objects:objects})
+                this.setState({fields:fields})
                 // Next, we are going to connect the Database with the JSON file, so that if any chnages that has been made will change our database record.
                 // The controller is trying to fetch the information to update the database record
-                fetch('https://localhost:4200/api/Users', {
+                fetch('http://localhost:4200/api/Users', {
                     method: 'put',
                     headers: {'Content-Type':'application/json'},
                     body: JSON.stringify({
@@ -61,60 +61,60 @@ export default class MyUsers extends React.Component {
         }
     }
     // Now, we will validate the Users form by ensuring that each object has been added and no object has been left empty
-    validateUsersForm() {
-        let objects = this.state.objects
+    validateForm() {
+        let fields = this.state.fields
         let errors = {}
-        let usersformIsValid = true
+        let formValidity = true
         
-        if(!objects["UsersFName"]) {
-            usersformIsValid = false 
+        if(!fields["UsersFName"]) {
+            formValidity = false 
             errors["UsersFName"] = "Please enter your valid First Name"
         }
 
-        if(!objects["UsersFName"] !== "Undefined") {
-            if(!objects["UsersFName"].match(/^[a-zA-Z]*$/)) {
+        if(!fields["UsersFName"] !== "Undefined") {
+            if(!fields["UsersFName"].match(/^[a-zA-Z]*$/)) {
                 errors["UsersFName"] = "Please Enter only alphabets to enter Users valid First Name"
             }
         }
-        if(!objects["UsersLName"]) {
-            usersformIsValid = false 
+        if(!fields["UsersLName"]) {
+            formValidity = false 
             errors["UsersLName"] = "Please enter your valid Last Name"
         }
 
-        if(!objects["UsersLName"] !== "Undefined") {
-            if(!objects["UsersLName"].match(/^[a-zA-Z]*$/)) {
+        if(!fields["UsersLName"] !== "Undefined") {
+            if(!fields["UsersLName"].match(/^[a-zA-Z]*$/)) {
                 errors["UsersLName"] = "Please Enter only alphabets to enter Users Last Name"
             }
         }
-        if(!objects["UsersEmail"]) {
-            usersformIsValid = false 
+        if(!fields["UsersEmail"]) {
+            formValidity = false 
             errors["UsersEmail"] = "Please enter your valid Email"
         }
 
-        if(!objects["UsersEmail"] !== "Undefined") {
+        if(!fields["UsersEmail"] !== "Undefined") {
             var emailPatternType = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i)
-            if(!emailPatternType.test(objects["UsersEmail"])) {
+            if(!emailPatternType.test(fields["UsersEmail"])) {
                 errors["UsersEmail"] = "Please Enter only alphabets to enter Users valid Email"
             }
         }
-        if(!objects["UsersPhone"]) {
-            usersformIsValid = false 
+        if(!fields["UsersPhone"]) {
+            formValidity = false 
             errors["UsersPhone"] = "Please enter your valid Phone"
         }
-        if(!objects["UsersPassword"]) {
-            usersformIsValid = false 
+        if(!fields["UsersPassword"]) {
+            formValidity = false 
             errors["UsersPassword"] = "Please enter your valid Password"
         }
-        if (!objects["UsersPassword"] !== "Undefined") {
-            if (!objects["UsersPassword"].length >= 6) {
-                usersformIsValid = false
+        if (!fields["UsersPassword"] !== "Undefined") {
+            if (!fields["UsersPassword"].length >= 6) {
+                formValidity = false
                 errors["UsersPassword"] = "Please enter a valid secured Password"
             }
         }
         this.setState({
             errors: errors
         })
-        return usersformIsValid
+        return formValidity
     }
 
 
@@ -122,65 +122,31 @@ export default class MyUsers extends React.Component {
     render() {
         return(
             
-            <div className="EditUsersForm">
+            <div className="editUsersForm">
                 <Title name="Edit" title="Users Details" />
-                <form method="sumbitForm" name="editUsersForm" onSubmit={this.submitUsersForm} ></form>
-                <br />
-
-                <form className="px-4 py-3">
-
-                    <div className="form-group">
-                        <label> "User's First Name"</label>
-                        <input type="text" className="UsersFName" ref={(ref) => {this.UsersFName = ref}} value={this.state.objects.UsersFName} onChange={this.handleanyChanges} /> 
-                    </div>
-                    <div className="displayErrorMessage">{this.state.errors.UsersFName} </div>
-
-                    <div className="form-group">
-                        <label> "User's Last Name"</label>
-                        <input type="text" className="UsersLName" ref={(ref) => {this.UsersLName = ref}} value={this.state.objects.UsersLName} onChange={this.handleanyChanges} /> 
-                    </div>
-                    <div className="displayErrorMessage">{this.state.errors.UsersLName} </div>
-
-                    <div className="form-group">
-                        <label> "User's Email Address"</label>
-                        <input type="text" className="UsersEmail" ref={(ref) => {this.UsersEmail = ref}} value={this.state.objects.UsersEmail} onChange={this.handleanyChanges} /> 
-                    </div>
-                    <div className="displayErrorMessage">{this.state.errors.UsersEmail} </div>
-
-                    <div className="form-group">
-                        <label> "User's Phone Number"</label>
-                        <input type="text" className="UsersPhone" ref={(ref) => {this.UsersPhone = ref}} value={this.state.objects.UsersPhone} onChange={this.handleanyChanges} /> 
-                    </div>
-                    <div className="displayErrorMessage">{this.state.errors.UsersPhone} </div>
-
-                    <div className="form-group">
-                        <label> "User's Password"</label>
-                        <input type="text" className="UsersPassword" ref={(ref) => {this.UsersPassword = ref}} value={this.state.objects.UsersPassword} onChange={this.handleanyChanges} /> 
-                    </div>
-                    <div className="displayErrorMessage">{this.state.errors.UsersPassword} </div>
-
-                    <br/>
-
-                    <div className="form-check">
-                        <input type="checkbox" className="checkForm"></input>
-                        <label className="checkLabel" for="dropdownCheck">
-                        Save
-                        </label>
-                    </div>
-                    <div className="formConfirm">
-                        <input type="submit" className="confirmButton" value="confirm">
-                            confirm
-                        </input>
-                        <label className="checkLabel" for="dropdownCheck">
-                        Save
-                        </label>
-                    </div>
+                <form method="sumbitForm" name="editUsersForm" onSubmit={this.submitUsersForm} >
+                    <br /> 
+                    <label>User's First Name</label> 
+                    <input type="text" name="UsersFName" ref={(ref) => {this.UsersFName = ref}} value={this.state.fields.UsersFName} onChange={this.handleChange} />   
+                    <div className='errorMessage'>{this.state.errors.UsersFName}</div>
+                    <label>Last Name</label> 
+                    <input type="text" name="UsersLName" ref={(ref) => {this.UsersLName = ref}} value={this.state.fields.UsersLName} onChange={this.handleChange} />   
+                    <div className='errorMessage'>{this.state.errors.UsersLName}</div>
+                    <label>Email Address</label>
+                    <input type="text" name="UsersEmail" ref={(ref) => {this.UsersEmail = ref}} value={this.state.fields.UsersEmail} onChange={this.handleChange} />   
+                    <div className='errorMessage'>{this.state.errors.UsersEmail}</div>
+                    <label>Phone</label>
+                    <input type="text" name="UsersPhone" ref={(ref) => {this.UsersPhone = ref}} value={this.state.fields.UsersPhone} onChange={this.handleChange} />   
+                    <div className='errorMessage'>{this.state.errors.UsersPhone}</div>
+                    <label>Password</label>
+                    <input type="text" name="UsersPassword" ref={(ref) => {this.UsersPassword = ref}} value={this.state.fields.UsersPassword} onChange={this.handleChange} />   
+                    <div className='errorMessage'>{this.state.errors.UsersPassword}</div>
+                    <br />
+                    <input type="submit" className="confirmButton" value="Submit" />
                     <Link to="/MyUsers">
-                        <input type="button" className="cancelButton" value="cancel">
-                            Cancel
-                        </input>
+                        <input type="button" className="cancelButton" value="Cancel" />
                     </Link>
-            </form>
+                </form>
            </div>
         )
     }

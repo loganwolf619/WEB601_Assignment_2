@@ -1,9 +1,9 @@
 // This is similar as SQL query. Here, we are usig KNEX t0 build queries or in a manner of structure the data
 // Listing all the Grpahics. It is more or less used to select all the function
-function listAllGraphics(req,res) {
+function listAllGraphics(req, res) {
     const { knex } = req.app.locals
     knex
-        .select ('GraphicsID', 'GraphicsType', 'GraphicsQuality', 'GraphicsArtist', 'UsersID')
+        .select('GraphicsID', 'GraphicsType','GraphicsQuality', 'GraphicsTitle', 'GraphicsArtist')
         .from('Graphics')
 
         //To export the data
@@ -16,7 +16,7 @@ function listGraphicsDisplay(req, res) {
     const { knex } = req.app.locals
     // We are going to select the database query
     knex
-        .select('GraphicsID', 'GraphicsArtist', 'GraphicsTitle', 'GraphicsType', 'GraphicsQuality')
+        .select('GraphicsID', 'GraphicsType','GraphicsQuality', 'GraphicsTitle', 'GraphicsArtist')
         .from('Graphics')
         .orderBy('GraphicsID', 'desc')
         .limit(12)
@@ -34,7 +34,7 @@ function listSingleGraphics(req, res) {
     const { GraphicsID } = req.params
     // This includes the Database Query
     knex 
-        .select ('GraphicsID', 'GraphicsType', 'GraphicsQuality', 'GraphicsTitle', 'GraphicsArtist', 'UsersID')
+        .select('GraphicsID', 'GraphicsType','GraphicsQuality', 'GraphicsTitle', 'GraphicsArtist')
         .from('Graphics')
         .where({
             GraphicsID: `${GraphicsID}`
@@ -54,10 +54,13 @@ function listSingleGraphics(req, res) {
 //Add a Graphics to the Database
 function postGraphics(req, res) {
     const { knex } = req.app.locals
+
     const payload = req.body
     // This parameter is being sent from the client which is a part of the Post Request
-    const mandatoryColumns = [/*'GraphicsType', 'GraphicsQuality', 'GraphicsTitle', 'GraphicsArtist'*/]
+    const mandatoryColumns = ['GraphicsID', 'GraphicsType','GraphicsQuality', 'GraphicsTitle', 'GraphicsArtist']
+
     const payloadKeys = Object.keys(payload)
+    
     const mandatoryColumnsExists = mandatoryColumns.every(mc => payloadKeys.includes(mc))
 
     //Checking if all important columns are filled before they are inserted into the query. If any information is missing it will return an error

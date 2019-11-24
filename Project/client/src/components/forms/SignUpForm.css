@@ -1,0 +1,9 @@
+.formSignUp {
+    width: 450px;
+    margin: 5% auto;
+    background-color: var(--mainGrey);
+    border-radius: 30px;
+    text-align: center;
+    padding: 2px 2px 2px 2px;
+}
+

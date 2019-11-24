@@ -1,46 +1,109 @@
 import React from 'react';
-import RegisterFrom from '../../forms/RegisterForm';
+//import RegisterForm from '../../forms/RegisterForm';
 import Title from '../../pageElements/Title';
+import {Form, Button} from 'semantic-ui-react'
+import {Link} from 'react-router-dom'
+import {connect} from 'react-redux'
+import {usersAction} from '../../../actions/usersAction'
 import './Login.css';
 
 
-export default class Login extends React.Component {
-    submitData = (data) => {
-        console.log(data)
+class LoginPage extends React.Component {
+    constructor(props) {
+      super(props)
+  
+      this.props.usersLogout()
+  
+      this.state = {
+          UsersEmail: '',
+          UsersPassword: '',
+          errors: {},
+          formSubmitted: false
+      }
+  
+      this.handleChange = this.handleChange.bind(this)
+      this.submitRegistration = this.submitRegistration.bind(this)
     }
-
+  
+  
+    handleChange(e) {
+      const {UsersFName, value} = e.target
+      this.setState({ [UsersFName]: value })
+    }
+  
+  
+    submitRegistration(e) {
+      e.preventDefault()
+  
+      this.setState({ formSubmitted: true })
+      const {UsersEmail, UsersPassword} = this.state
+      if (UsersEmail && UsersPassword) {
+        this.props.usersLogin(UsersEmail, UsersPassword)
+      }
+    }
+  
     render() {
-        return (  
-            <div className="login">
-                <h2>Login Form</h2>
-                <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
-
-                <div id="id01" className="modal">
-                
-                    <form className="modal-content animate" action="action" method="post">
-                        <div className="imgcontainer">
-                            <span onclick="document.getElementById('id01').style.display='none'" className="close" title="Close Modal">&times;</span>
-                            <img src="#" alt="Avatar" className="image" />
-                                
-                            <div className="loginPageWrapper">
-                                <section className="loginPage">
-                                    <Title name="User" title="Login" />
-                                    <br />
-                                    <div>
-                                        <div className="loginObjects">
-                                            <Login submitData={this.submitData} />
-                                        </div>
-                                    </div>
-                                </section>
-                            </div>
-
-                            <div className="container" style="background-color:#f1f1f1">
-                                <button type="button" className="cancelbtn">Cancel</button>
-                            </div>
-                        </div>
-                    </form>
+        const { loggingIn } = this.props
+        const { UsersEmail, UsersPassword, formSubmitted } = this.state
+    
+        return (
+          <div className="loginContainer">
+            <section className="registerForm">
+              <Title name="UserName" title="LoginUser" />
+              <br />
+              <div>
+                <div className='registrationFields'>
+                  <Form onSubmit={this.submitLoginForm}>
+                    <div className={'groupForm' + (formSubmitted && !UsersEmail ? 'hasError' : '')}>
+                      <label>Email</label>
+                      <input 
+                        className="controlForm"
+                        type="text"
+                        name="UsersEmail"
+                        placeholder="example@example.com.."
+                        value={UsersEmail}
+                        onChange={this.handleChange}
+                        field="UsersEmail"
+                        />
+                        {formSubmitted && !UsersEmail &&
+                          <div className="helpForm">Email is required</div>}
+                    </div>
+                    <div className={'groupForm' + (formSubmitted && !UsersPassword ? 'hasError' : '')}>
+                      <label>Users Password</label>
+                      <input 
+                        className="controlForm"
+                        type="text"
+                        name="UsersPassword" 
+                        placeholder="Password.."
+                        value={UsersPassword}
+                        onChange={this.handleChange}
+                        />
+                        {formSubmitted && !UsersPassword &&
+                        <div className="helpForm">Password is required</div>}
+                    </div>
+                    <br />
+                    <div className="form-group">
+                      <ButtonContainer primary className="buttonLogin">Login</ButtonContainer>
+                      <Link to="/Register" className="button">Register</Link>
+                    </div>
+                  </Form>      
                 </div>
-            </div>
+              </div>
+            </section> 
+          </div> 
         )
+      }
     }
-}
+    
+function mapState(state) {
+    const {loggingIn} = state.authentication
+    return {loggingIn}
+  }
+  
+  const actionCreators = {
+    usersLogin: usersAction.usersLogin,
+    usersLogout: usersAction.usersLogout
+  }
+  
+  const connectedLoginPage = connect(mapState, actionCreators)(LoginPage)
+  export {connectedLoginPage as LoginPage}

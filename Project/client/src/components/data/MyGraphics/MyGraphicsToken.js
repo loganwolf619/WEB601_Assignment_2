@@ -54,7 +54,10 @@ export default class MyGraphics extends React.Component {
                                 {Graphics.GraphicsQuality}
                             </h3>
                         </div>
-                        <input type="button" className="deleteButton" value="Graphics Delete" onClick={this.deleteGraphics.bind(this,Graphics.GraphicsID)} />
+                        <Link Graphics={Graphics.GraphicsID} to='/EditGraphics'>
+                          <input type="submit" className="editButton" value="Edit Graphics" /> 
+                        </Link>
+                            <input type="submit" className="deleteButton" value="Delete Graphics" onClick={this.deleteGraphics.bind(this,Graphics.GraphicsID)} />
                     </div>
                 ))}
             </div>

@@ -1,34 +1,17 @@
-.container {
-    width: 90%;
-    height: 100px;
-    text-align: center;
-    border: 2px solid black;
-    margin-bottom: 10px;
-    background-color: lightcoral;
-    text-emphasis-color: bold black;
-}
 
-.box {
-    width: 25%;
-    height: 180px;
-    border: 2px dashed dark red;
-    text-align: center;
-    margin: 8px 10px;
-    display: inine-block;
+.columnContent {
+   width: 25%;
+   background-color: blanchedalmond;
+   float: left;
+   height: auto;
+   padding: 3% 5%;
+   color: var(--mainGrey); 
 }
-
-.formGroup {
-    width: 20%;
-    background-color: lightcyan;
-    float: center;
-    height: auto;
-    padding: 3px 5px;
-}
-
-.ColumnContent {
+.groupContent {
     width: 80%;
-    background-color: lightsalmon;
-    padding: 4px;
-    float: center;
+    background-color: lightblue;
+    padding: 5%;
+    float: right;
     min-height: 70vh;
+    text-align: center;
 }

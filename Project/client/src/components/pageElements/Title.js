@@ -1,10 +1,10 @@
 import React from 'react'
-import './PageElements.css'
+import './PageTitle.css'
 
 export default function Title({name,title}) {
     return (
-        <div className="row">
-          <div className=".col-10.mx-auto.my-2.text-center.text-title">
+        <div className="title-container">
+          <div className="text-title">
               <h1 className="text-capitalize font-weight-bold">
                  <strong className="text-red">{name} </strong>
                   <strong className="text-bright">{title}</strong>

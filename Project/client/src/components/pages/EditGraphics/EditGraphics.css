@@ -1,7 +1,7 @@
 .graphicsContainer {
     text-align: center;
-    padding: 30px;
-    margin: 5px;
+    min-height: 65vh;
+    margin: 2%;
     width: 25%;
     background-color: beige;
     border-radius: 6px;
@@ -9,12 +9,9 @@
     text-shadow: 2px 2px 2px rgb(27, 5, 48);
 }
 
-.graphicsContainer {
-    float: center;
-    text-align: center;
-    padding: 5px;
-    margin-top: 5px;
-    width: 75%;
+.editGraphicsContent {
+    margin-top: 0% 5%;
+    width: 100%;
     background-color: beige;
     border-radius: 6px;
     box-shadow: 3px 6px;
@@ -22,7 +19,7 @@
 }
 
 .carousel-inner{
-    margin: 50px auto; 
+    margin: 0% 5%; 
     position: relative; 
     width: 240px; 
     height: 240px; 

@@ -5,8 +5,14 @@ color: black;
 background-color: white;
 }
 
-.footerContainer {
-    min-height: 16vh;
-    background-color: blanchedalmond;
-    clear: both;
-}
+.creditLink {
+    color: #634610;
+  }
+
+  .leftFooterColumn {
+    padding-left: 7%;
+  }
+
+  .list-inline-item {
+    color: #d6728b
+  }

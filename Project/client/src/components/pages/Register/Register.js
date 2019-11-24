@@ -1,16 +1,20 @@
 import React from 'react';
 import Title from '../../pageElements/Title';
 import './Register.css';
+import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {Form, ButtonContainer} from 'semantic-ui-react';
+import { usersAction } from '../../../actions/usersAction';
 
 
-export default class Register extends React.Component {
-    
+class Register extends React.Component {    
     // We are going too create a constructor by using props. 
     // Props Get the value of a property for the first element in the set of matched elements or set one or more properties for every matched element.
     constructor() {
     super()
     this.state = {
-        objects: {UsersFName: '', UsersLName: '', UsersPassword: '', UsersEmail: '', UsersPhone: ''},
+        fields: {UsersFName: '', UsersLName: '', UsersPassword: '', UsersEmail: '', UsersPhone: ''},
+        submitForm: false,
         errors: {}
     }
 
@@ -22,88 +26,77 @@ export default class Register extends React.Component {
 
     // Method to update the properties state upon any change made by the user to a UI property.
     handleChange(e) {
-        let objects = this.state.objects
-        objects[e.target.name] = e.target.value
+        const {usersName, value} = e.target
+        const {fields} = this.state
         this.setState({
-            objects
+            fields: {
+                ...fields,
+                [usersName]: value
+            }
         })
     }
 
     // 
     submitUsersRegistration(e) {
         e.preventDefault()
+        this.setState({ submitForm: true })
+        const {fields} = this.state
         if (this.validateForm()) {
-            let objects = {}
-            objects["UsersFName"] = ""
-            objects["UsersLName"] = ""
-            objects["UsersEmail"] = ""
-            objects["UsersPhone"] = ""
-            objects["UsersPassword"] = ""
-            this.setState({objects:objects})
-          // We are trying to connect our database with the curre
-          fetch('http://localhost:4200/api/Users', {
-            method: 'post',
-            headers: {'Content-Type':'application/json'},
-            body: JSON.stringify({
-                "UsersFName": this.UsersFName.value,
-                "UsersLName": this.UsersLName.value,
-                "UsersEmail": this.UsersEmail.value,
-                "UsersPhone": this.UsersPhone.value,
-                "UsersPassword": this.UsersPassword.value,
-            })
-        })
+            if (fields.UsersFName && fields.UsersLName && fields.UsersEmail && fields.UsersPhone && fields.UsersPassword) {
+                this.props.register(fields)
+            }
             // The user has created the account in the website. Then we will receiving a message saying an account has been create.
             console.log("We have created the account")
-            alert("Form has been submitted")
+            alert("Form has been submitForm")
         }
     }
     // Now, we will validate the Users form by ensuring that each object has been added and no object has been left empty
     validateUsersForm() {
-      let objects = this.state.objects
+      let fields = this.state.fields
       let errors = {}
       let usersformIsValid = true
       
-      if(!objects["UsersFName"]) {
+      if(!fields["UsersFName"]) {
           usersformIsValid = false 
           errors["UsersFName"] = "Please enter your valid First Name"
       }
 
-      if(!objects["UsersFName"] !== "Undefined") {
-          if(!objects["UsersFName"].match(/^[a-zA-Z]*$/)) {
+      if(!fields["UsersFName"] !== "Undefined") {
+          if(!fields["UsersFName"].match(/^[a-zA-Z]*$/)) {
               errors["UsersFName"] = "Please Enter only alphabets to enter Users valid First Name"
           }
       }
-      if(!objects["UsersLName"]) {
+      if(!fields["UsersLName"]) {
           usersformIsValid = false 
           errors["UsersLName"] = "Please enter your valid Last Name"
       }
 
-      if(!objects["UsersLName"] !== "Undefined") {
-          if(!objects["UsersLName"].match(/^[a-zA-Z]*$/)) {
+      if(!fields["UsersLName"] !== "Undefined") {
+          if(!fields["UsersLName"].match(/^[a-zA-Z]*$/)) {
               errors["UsersLName"] = "Please Enter only alphabets to enter Users Last Name"
           }
       }
-      if(!objects["UsersEmail"]) {
+      if(!fields["UsersEmail"]) {
           usersformIsValid = false 
           errors["UsersEmail"] = "Please enter your valid Email"
       }
 
-      if(!objects["UsersEmail"] !== "Undefined") {
+      if(!fields["UsersEmail"] !== "Undefined") {
           var emailPatternType = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i)
-          if(!emailPatternType.test(objects["UsersEmail"])) {
+          if(!emailPatternType.test(fields["UsersEmail"])) {
               errors["UsersEmail"] = "Please Enter only alphabets to enter Users valid Email"
           }
       }
-      if(!objects["UsersPhone"]) {
+      if(!fields["UsersPhone"]) {
           usersformIsValid = false 
           errors["UsersPhone"] = "Please enter your valid Phone"
       }
-      if(!objects["UsersPassword"]) {
+      if(!fields["UsersPassword"]) {
           usersformIsValid = false 
           errors["UsersPassword"] = "Please enter your valid Password"
       }
-      if (!objects["UsersPassword"] !== "Undefined") {
-          if (!objects["UsersPassword"].length >= 12) {
+      if (!fields["UsersPassword"] !== "Undefined") {
+          if (!fields["UsersPassword"].length >= 12) {
               usersformIsValid = false
               errors["UsersPassword"] = "Please enter a valid secured Password"
           }
@@ -114,85 +107,90 @@ export default class Register extends React.Component {
       return usersformIsValid
   }
 
-      render() {
-            return(
-                <div className="usersRegistrationForm">
-                  <Title name="Users" title="Sign Up" />
-                  <form method="post" name="usersRegistrationForm" onSubmit={this.submitUsersRegistration} >
-
-                      <div className="usersForm">
-                        <label for="FirstName">First Name</label>
-                        <input type="text" name="usersFirstName" id="usersFirstName" ref={(ref) => {this.UsersFName = ref}} placeholder="User's First Name is: " value={this.state.objects.UsersFName}></input>                    
-                          <div className="displayErrorNotification">
-                              {this.state.errors.UsersFName}
-                          </div>
-                      </div>
-
-                      <div className="usersForm">
-                        <label for="LastName">Email Name</label>
-                        <input type="text" name="usersLastName" id="usersLastName" ref={(ref) => {this.UsersLName = ref}} placeholder="User's Last Name is: " value={this.state.objects.UsersLName}></input>                    
-                          <div className="displayErrorNotification">
-                              {this.state.errors.UsersLName}
-                          </div>
-                      </div>
-
-                      <div className="usersForm">
-                        <label for="Email">Email</label>
-                        <input type="text" name="Email" id="usersEmail" ref={(ref) => {this.UsersEmail = ref}} placeholder="User's Email is: " value={this.state.objects.UsersEmail}></input>                    
-                          <div className="displayErrorNotification">
-                              {this.state.errors.UsersEmail}
-                          </div>
-                      </div>
-
-                      <div className="usersForm">
-                        <label for="Phone">Phone</label>
-                        <input type="text" name="usersPhoneNumber" id="usersPhoneNumber" ref={(ref) => {this.UsersPhone = ref}} placeholder="User's Phone Number is: " value={this.state.objects.UsersPhone}></input>                    
-                          <div className="displayErrorNotification">
-                            {this.state.errors.UsersPhone}
-                          </div>
-                      </div>
-                      <div className="usersForm">
-                        <label for="Password">Phone</label>
-                        <input type="text" name="usersPassword" id="usersPassword" ref={(ref) => {this.UsersPassword = ref}} placeholder="User's Password is: " value={this.state.objects.UsersPassword}></input>                    
-                          <div className="displayErrorNotification">
-                            {this.state.errors.UsersPassword}
-                          </div>
-                      </div>
-                      <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="dropdownCheck"></input>
-                        <label className="form-check-label" for="dropdownCheck">
-                            Remember me
-                        </label>
-                      </div>
-                      <br />
-                      <input type="submit" className="button" value="Register" />
-                  </form>
-                </div>
-            )
-    }
+  render() {
+    const {registering} = this.props
+    const { fields, submitForm } = this.state
+    return(
+        <div className="registerContainer">
+            <div className="registrationForm">
+                <PageTitle name="Registration" title="Form" />
+                <Form name="registrationForm" onSubmit= {this.submitSignUpForm} >
+                    <br /> 
+                    <div className={'groupForm' + (submitForm && !fields.UsersFName ? 'error' : '')}>
+                        <label>User's First Name</label> 
+                        <input type="text"  className="controlForm" name="UsersFName" placeholder="User's First Name:" 
+                            value={fields.UsersFName} 
+                            onChange={this.handleChange} />   
+                            {submitForm && !fields.UsersFName && 
+                                <div className="controlHelp">Please Enter your first name</div>
+                            }
+                    </div>
+                    <div className='errorNotification'>{this.state.errors.UsersFName}</div>
+                    
+                    <div className={'groupForm' + (submitForm && !fields.UsersLName ? 'error' : '')}>
+                        <label>User's Last Name</label> 
+                        <input type="text" className="controlForm" name="UsersLName" placeholder="User's Last Name:" 
+                            value={fields.UsersLName} 
+                            onChange={this.handleChange} />   
+                            {submitForm && !fields.UsersLName && 
+                                <div className="controlHelp">Please Enter ypur last name</div>
+                            }
+                    </div>
+                    <div className='errorNotification'>{this.state.errors.UsersLName}</div>
+                    
+                    <div className={'groupForm' + (submitForm && !fields.UsersEmail ? 'error' : '')}>
+                        <label>Email Address</label>
+                        <input type="text"  className="controlForm"name="UsersEmail" placeholder="User's Email Address is:" 
+                            value={fields.UsersEmail} 
+                            onChange={this.handleChange} />   
+                            {submitForm && !fields.UsersEmail && 
+                                <div className="controlHelp">Please enter the UsersEmail address</div>
+                            }
+                    </div>
+                    <div className='errorNotification'>{this.state.errors.UsersEmail}</div>
+                    
+                    <div className={'groupForm' + (submitForm && !fields.UsersPhone ? 'error' : '')}>
+                        <label>User's Phone</label>
+                        <input type="text" className="controlForm"name="UsersPhone" placeholder="User's Phone number is:" 
+                            value={fields.UsersPhone} 
+                            onChange={this.handleChange} />   
+                            {submitForm && !fields.UsersPhone && 
+                                <div className="controlHelp">Please enter the Phone number</div>
+                            }
+                    </div>
+                    <div className='errorNotification'>{this.state.errors.UsersPhone}</div>
+                   
+                    <div className={'groupForm' + (submitForm && !fields.UsersPassword ? 'error' : '')}>
+                        <label>User's Password</label>
+                        <input type="text" className="controlForm"name="UsersPassword" placeholder="Choose a UsersPassword.." 
+                            value={fields.UsersPassword} 
+                            onChange={this.handleChange} />   
+                            {submitForm && !fields.UsersPassword && 
+                                <div className="controlHelp">Password is required</div>
+                            }
+                    </div>
+                    <div className='errorNotification'>{this.state.errors.UsersPassword}</div>
+                    <br />
+                    <div className='groupForm'>
+                        <ButtonContainer className="button">Register</ButtonContainer> 
+                        <Link to="/" className="button button-link">Cancel</Link>
+                    </div>
+                </Form>
+            </div>
+        </div>
+    )
+}
 }
 
 
-//             <div>
+function mapState(state) {
+    const {registering} = state.registration
+    return {registering}
+}
 
-    //   <form className="px-4 py-3">
-    //     <div className="form-group">
-    //       <label for="exampleDropdownFormEmail1">Email address</label>
-    //       <input type="UsersEmail" className="form-control" id="exampleDropdownFormEmail1" placeholder="UsersEmail@example.com"></input>
-    //     </div>
-    //     <div class="form-group">
-    //       <label for="exampleDropdownFormPassword1">Password</label>
-    //       <input type="UsersPassword" className="form-control" id="exampleDropdownFormPassword1" placeholder="Password"></input>
-    //     </div>
-    //     <div class="form-check">
-    //       <input type="checkbox" class="form-check-input" id="dropdownCheck"></input>
-    //       <label className="form-check-label" for="dropdownCheck">
-    //         Remember me
-    //       </label>
-    //     </div>
-    //     <button type="submit" className="btn btn-primary">Sign in</button>
-    //   </form>
-    //   <div className="dropdown-divider"></div>
-    //   <a claclassNamess="dropdown-item" href="#">New around here? Sign up</a>
-    //   <a className="dropdown-item" href="#">Forgot UsersPassword?</a>
-    // </div>
+const actionCreators = {
+    register: usersAction.register
+}
+
+const connectedRegisterPage = connect(mapState, actionCreators)(Register)
+export { connectedRegisterPage as RegisterPage }

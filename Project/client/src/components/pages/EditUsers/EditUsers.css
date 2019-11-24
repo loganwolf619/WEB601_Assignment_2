@@ -1,10 +1,9 @@
 .EditUsersForm {
-    width: 100%;
-    padding: 15px;
-    margin: 5px 0 22px 0;
-    display: inline-block;
+    width: 460px;
+    padding: 2% 4%;
+    margin: 5% auto;
     border: none;
-    background: #f1f1f1;
+    background-color: #f1f1f1;
     text-align: center;
 }
 
@@ -43,31 +42,36 @@
 }
 
 .confirmButton{
-    background-color: #4CAF50;
-    color: white;
+    background-color: rgb(184, 112, 19);
+    color:grey;
     padding: 16px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    opacity: 0.9;
+    margin: 0% 10%;
+    border-radius: 7%;
+    width: 60%;
+    position: relative;
+    font-weight: bolder;
 }
 
 .confirmButton:hover{
     opacity: 1;
+    background-color: indianred;
+    cursor: pointer;
+
 }
 
 
 .cancelButton {
-    background-color: red;
-    color: white;
+    background-color: rgb(13, 183, 206);
+    color:grey;
     padding: 16px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    opacity: 0.9;
+    margin: 0% 10%;
+    border-radius: 7%;
+    width: 60%;
+    position: relative;
+    font-weight: bolder;
 }
 .cancelButton:hover{
     opacity: 1;
+    background-color: rgb(230, 13, 13);
+    cursor: pointer;
 }

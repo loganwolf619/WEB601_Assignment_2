@@ -1,0 +1,43 @@
+.contactFormContainer {
+    width: 500px;
+    margin: 2% 2%;
+    height: auto;
+    background-color: rgb(114, 108, 108);
+    border-radius: 25px;
+    padding: 2% 2%;
+}
+
+.confirmButton{
+    background-color: rgb(184, 112, 19);
+    color:grey;
+    padding: 16px 20px;
+    margin: 0% 10%;
+    border-radius: 7%;
+    width: 60%;
+    position: relative;
+    font-weight: bolder;
+}
+
+.confirmButton:hover{
+    opacity: 1;
+    background-color: indianred;
+    cursor: pointer;
+
+}
+
+
+.cancelButton {
+    background-color: rgb(13, 183, 206);
+    color:grey;
+    padding: 16px 20px;
+    margin: 0% 10%;
+    border-radius: 7%;
+    width: 60%;
+    position: relative;
+    font-weight: bolder;
+}
+.cancelButton:hover{
+    opacity: 1;
+    background-color: rgb(230, 13, 13);
+    cursor: pointer;
+}

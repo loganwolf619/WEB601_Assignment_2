@@ -23,7 +23,7 @@ export default class Home extends React.Component {
     }
     // Now we are going to display all the Graphics that has been exported from the Database and distributed in the Graphics Container
     getGraphics() {
-        fetch('https://localhost:4200/api/Graphics')
+        fetch('http://localhost:4200/api/Graphics')
         .then(res => res.json())
         .then(data => {
             if(data.code === '404') {
@@ -41,30 +41,35 @@ export default class Home extends React.Component {
             console.log(error)
         })
     }
-    render() {
-        return (
-            <div className="homePageWrapper">
 
-                <div className="container">
-                    <div className="subContainer">
-                        <h3>Website Purpose</h3>
+
+  render() {
+        return( 
+            <div className="pageContainer">
+                <div className="objectContainer">
+                    <img src='../../images/img.jpg' alt="design" className="apexDesign" /> 
+                    <div className="graphicsText">
+                        <h3>Please Upload your own Graphics</h3>
                     </div>
-                    <div className="uploadGraphics">    
-                        <Link to="/UploadGraphics">
+                    <div className="updateAction">
+                        <Link to="/UploadGraphisc">
                             <ButtonContainer>
-                                Upload Graphics
+                                Upload Graphis
                             </ButtonContainer>
                         </Link>
                     </div>
                 </div>
-                
-                <div className="homeStructure">
-                    <div>
-                        <Link to="/Register">
-                            <ButtonContainer>
-                                Register
-                            </ButtonContainer>
-                        </Link>
+                <div className="homeContainer">
+                    <div className="search-option">
+                        <form>
+                            <div className="search-bar">
+                                <input type="text" placeholder="Search" aria-label="Search" />
+                            </div>
+                        </form>      
+                    </div>
+                    <div className="graphicsDisplayToken">
+                        <h1>Latest Music</h1>
+                        <GraphicsDisplayToken Graphics={this.state.Graphics}/>
                     </div>
                 </div>
             </div>

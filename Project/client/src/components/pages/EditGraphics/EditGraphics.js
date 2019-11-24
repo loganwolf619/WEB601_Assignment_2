@@ -9,7 +9,7 @@ export default class EditGraphics extends React.Component {
     constructor(props) {
         super(props)
             this.state = ({
-                isGetting: false,
+                fetching: false,
                 Graphics: []
             })
     }
@@ -19,16 +19,16 @@ export default class EditGraphics extends React.Component {
     }
     // Now we are going to get all the Graphics from the database and arrange them in a conatiner that contains bunch of Graphics
     getGraphics() {
-        fetch('https://localhost:4200/api/Graphics')
+        fetch('http://localhost:4200/api/Graphics')
             .then(res => res.json())
             .then(data => {
                 if(data.code === '404') {
                     this.setState({
-                        isGetting: false,
+                        fetching: false,
                     })
                 } else {
                     this.setState({
-                        isGetting: true,
+                        fetching: true,
                         Graphics: data,
                     })
                 }

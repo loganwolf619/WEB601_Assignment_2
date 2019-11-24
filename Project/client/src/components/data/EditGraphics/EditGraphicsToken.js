@@ -3,13 +3,13 @@ import {Link} from 'react-router-dom'
 import './EditGraphicsToken.css'
 
 export default class MyGraphics extends React.Component {
-    //Sometimes we need a "blueprint" for creating many objects of the same "type". The way to create an "object type", is to use an object constructor function.
+    //Sometimes we need a "blueprint" for creating many fields of the same "type". The way to create an "object type", is to use an object constructor function.
     // Here, we are going to use the constructor function to create Graphics of the same type using each Graphics collective information
 
     constructor() {
         super()
         this.state = {
-            objects: {GraphicsTitle: '', GraphicsArtist: '', GraphicsType: '', GraphicsQuality: '', GraphicsID: ''},
+            fields: {GraphicsTitle: '', GraphicsArtist: '', GraphicsType: '', GraphicsQuality: '', GraphicsID: ''},
             errors: {}
         }
 
@@ -17,16 +17,16 @@ export default class MyGraphics extends React.Component {
     //  The bind() method is going to attach one or more event handlers for selected elements, and specifies a function to run when the event occurs.
     // In this reagrd, we are going to we are going to attach the functions of the Graphics with the help of bind()
 
-    this.bindanyChanges = this.bindanyChanges.bind(this)
+    this.handleChange = this.handleChange.bind(this)
     this.editGraphicsChanges = this.editGraphicsChanges.bind(this)
     }
 
     // Now, we are going to apply updates to any properties based on any changes made by the user using GUI
-    handlanyChanges(Changes) {
-        let objects = this.state.objects
-        objects[Changes.target.name] = Changes.target.value
+    handleChange(e) {
+        let fields = this.state.fields
+        fields[e.target.name] = e.target.value
         this.setState({
-            objects
+            fields
         })
     }
     // Next, we are going to connect the Database with the JSON file, so that if any chnages that has been made will change our database record.
@@ -58,16 +58,16 @@ export default class MyGraphics extends React.Component {
                 {this.props.Graphics.map((Graphics) => (
                     <div className="Graphics" key={Graphics.GraphicsID}>
                         <h3>{Graphics.GraphicsTitle}</h3>
-                        <input type="text" name="GraphicsTitle" id="GraphicsTitle" ref={(ref) => {this.GraphicsTitle = ref}} value={this.state.objects.GraphicsTitle} onChange={this.handlanyChanges} />
+                        <input type="text" name="GraphicsTitle" id="GraphicsTitle" ref={(ref) => {this.GraphicsTitle = ref}} value={this.state.fields.GraphicsTitle} onChange={this.handleChange} />
                         
                         <h3>{Graphics.GraphicsArtist}</h3>
-                        <input type="text" name="GraphicsArtist" id="GraphicsArtist" ref={(ref) => {this.GraphicsArtist = ref}} value={this.state.objects.GraphicsTitle} onChange={this.handlanyChanges} />
+                        <input type="text" name="GraphicsArtist" id="GraphicsArtist" ref={(ref) => {this.GraphicsArtist = ref}} value={this.state.fields.GraphicsTitle} onChange={this.handleChange} />
 
                         <h3>{Graphics.GraphicsType}</h3>
-                        <input type="text" name="GraphicsType" id="GraphicsType" ref={(ref) => {this.GraphicsType = ref}} value={this.state.objects.GraphicsType} onChange={this.handlanyChanges} />
+                        <input type="text" name="GraphicsType" id="GraphicsType" ref={(ref) => {this.GraphicsType = ref}} value={this.state.fields.GraphicsType} onChange={this.handleChange} />
 
                         <h3>{Graphics.GraphicsQuality}</h3>
-                        <input type="text" name="GraphicsQuality" id="GraphicsQuality" ref={(ref) => {this.GraphicsQuality = ref}} value={this.state.objects.GraphicsQuality} onChange={this.handlanyChanges} />
+                        <input type="text" name="GraphicsQuality" id="GraphicsQuality" ref={(ref) => {this.GraphicsQuality = ref}} value={this.state.fields.GraphicsQuality} onChange={this.handleChange} />
                         
                         <br/>
                         <br/>

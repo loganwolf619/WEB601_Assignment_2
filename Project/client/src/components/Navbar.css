@@ -1,43 +1,58 @@
-.navbar {
-    /* color: red !important; */
-    background-color: wheat !important;
-    padding: 5%;
-    background-repeat: no-repeat ;
-    border-color: green ;
-    background-image: none ;
-  }
-  
-  .navbar-logo {
-      height: 70px;
-      width: 100px;
-      float: left;
-  }
+.linkContainer {
+  margin-top: 25px;
+}
+.apexlogo-container {
+  margin: 5px 2px 5px 2px;
+}
+.navBarBrand {
+  color: darkred;
+}
 
-  .navbar ul li {
-      float: left;
-  }
+.logo-navbar {
+  width: 100px;
+  height: 100px;
+  float: left;
+  margin: 4px;
+}
 
-  .navbar-brand:hover{
-    color: black ;
-  }
-  .navbar-toggleable-md {
-    background-color: black ;
-  }
-  .navbar-toggler {
-    background-color: red;
-  }
- .navbar-nav li a{
-    color: blue ;
-  }
-  .navbar-item {
-      float: left;
-  }
- .dropdown-menu .dropdown-item:hover{
-    display: black ;
-    opacity: 0.5 ;
+.autoNavbar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
 
-  }
-  .navbarTag {
-    width: 500px;
-    height: 300px;
-  }
+
+.dropdownBackground {
+  background-color: #753e5e !important;
+}
+.dropDown {
+  color:yellow;
+  font-size: 1.2rem;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.navBarLink{
+  padding: 5px 10px;
+  color: #3737eb  !important;
+  font-size: 1.5rem;
+}
+.navBarLink :hover {
+  color: greenyellow !important; 
+}
+
+.dropDown {
+  color: brown;
+  font-size: 1.3rem;
+  margin-top: 20px;
+}
+
+.dropDownLink {
+  color: rgb(44, 2, 2);
+  font-size: 1rem;
+}
+
+.navButtons{
+  margin-top: 10px;
+  color: blueviolet;
+  font-size: 1.2rem;
+}

@@ -1,23 +1,56 @@
-.homeStructure {
+
+.pageContainer {
+    text-align: center;
+}
+.objectContainer {
+    position: absolute;
+    top: 40%;
+    left: 1%;
+    right: 1%;
+    color: goldenrod;
+    text-align: center;
+}
+.objectContainer .graphicsText h3{
+    font-size: larger;
+    line-height: 2;
+    text-align: center;
+}
+.apexDesign {
     width: 100%;
-    height: 100%;
-
+    height: auto;
 }
-
-.homePageWrapper {
-    width: 50%;
-    height: 50%;
+.updateAction {
+    position: absolute;
+    top: 75%;
+    left: 1%;
+    right: 1%;
+    margin: auto;
+    text-align: center;
 }
-
-.container {
-    width: 50%;
-    background: grey;;
+.homeContainer {
+    min-height: 75vh;
+    padding: 1%;
 }
-.subContainer{
-    width: 500px;
-    height: 400PX;
-    background: lightblue;
+.search-option {
+    position: absolute;
+    top: 1%;
+    left: 1%;
+    right: 1%;
+    margin: 0 auto;
+    text-align: center;
 }
-.uploadGraphics{
-    background: lightcoral;
+.search-bar {
+    position: absolute;
+    top: 10%;
+    left: 1%;
+    right: 1%;
+    margin: 5% auto;
+    text-align: center;
+}
+}
+.graphicsDisplayToken {
+    margin-top: 10%;
+    margin-bottom: 2%;
+    padding: 4%;
+    min-height: 75vh;
 }

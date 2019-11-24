@@ -21,7 +21,7 @@ export default class MyUsers extends React.Component {
     }
     // Now we are going to display all the Graphics that has been exported from the Database and distributed in the Graphics Container
     getUsers() {
-        fetch('https://localhost:4200/api/Graphics')
+        fetch('http://localhost:4200/api/Users')
         .then(res => res.json())
         .then(data => {
             if(data.code === '404') {
@@ -41,12 +41,12 @@ export default class MyUsers extends React.Component {
     }
     render() {
         return(
-            <div className="myUsersWrapper">
+            <div className="usersContainer">
                 <section className="usersDetails">
                     <Title name="Personal" tite="Account" />
-                    <div className="usersContainer">
-                        <form className="modal-content animate" action="action" method="post">
-                            <div className="imgcontainer">
+                    <div className="usersGrid">
+                        <form>
+                            <div className="imgContainer">
                                 <br/>
                                 <h3> Users's First Name </h3>
                                 <h3> Users's Last Name </h3>

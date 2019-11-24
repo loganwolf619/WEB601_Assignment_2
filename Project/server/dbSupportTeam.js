@@ -27,5 +27,5 @@ function postSupportTeam(req, res) {
 
 // We are going to export the fucntion as a module object
 module.exports = {
-    postSupportTeam
+    postSupportTeam,
 }
