@@ -3,6 +3,9 @@ import './Footer.css'
 import {Link} from 'react-router-dom'
 
 const Footer = () => {
+
+    return(
+
   <footer className="page-footer font-small special-color-dark pt-4">
   
     <div className="Footercontainer">
@@ -40,10 +43,12 @@ const Footer = () => {
   
     </div>
   
-    <div claclassNamess="footer-copyright text-center py-3">© Apex-ShutteBug 2019 Copyright:
+    <div className="footer-copyright text-center py-3">© Apex-ShutteBug 2019 Copyright:
       <a href="#!"> Apex ShutterBug</a>
     </div>
 
   </footer>
+    )
 }
+
   export default Footer;

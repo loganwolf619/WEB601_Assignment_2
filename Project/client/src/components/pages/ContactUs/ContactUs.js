@@ -1,6 +1,7 @@
 import React from 'react';
 import './ContactUs.css';
 import Title from '../../pageElements/Title';
+import {Link} from 'react-router-dom';
 
 export default class ContactUs extends React.Component {
       // We are going too create a constructor by using props. 

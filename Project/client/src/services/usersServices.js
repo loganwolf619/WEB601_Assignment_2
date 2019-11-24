@@ -27,7 +27,7 @@ function logout() {
     localStorage.removeItem('users')
 }
 
-function getUsers(UsersEmail) {
+function registration(UsersEmail) {
     const requestOptions = {
         method: 'get',
     }
@@ -39,7 +39,7 @@ function getUsers(UsersEmail) {
     const requestOptions = {
         method: 'post',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(fields)
+        body: JSON.stringify(UsersEmail)
     }
 
     return fetch('http://localhost:4200/api/users', requestOptions)

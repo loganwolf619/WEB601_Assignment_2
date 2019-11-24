@@ -1,15 +1,15 @@
 import React from 'react';
 import {Switch,Route} from 'react-router-dom';
 import './App.css';
-import Navbar from'./components/Navbar'; 
+import Navbar from'./components/Navbar/Navbar'; 
 import Home from'./components/pages/Home/Home';
-import ContactUs from'./components/pages/ContactUs';
+import ContactUs from'./components/pages/ContactUs/ContactUs';
 import MyUsers from'./components/pages/MyUsers/MyUsers';
 import Default from './components/pages/Default';
 import BrowseGraphics from './components/pages/BrowseGraphics/Browse';
 import Footer from './components/Footer/Footer';
-import {Login} from './components/pages/Login';
-import {Register} from'./components/pages/Register';
+import {LoginPage} from './components/pages/Login/Login';
+import {RegisterPage} from'./components/pages/Register/Register';
 import MyGraphics from './components/pages/MyGraphics/MyGraphics';
 import UploadGraphics from'./components/pages/UploadGraphics/UploadGraphics';
 import EditUsers from'./components/pages/EditUsers/EditUsers';
@@ -26,8 +26,8 @@ const App = () => (
               <Route exact path="/" component={Home} />
               <Route path="/browsegraphics" component={BrowseGraphics} />
               <Route path="/contactus" component={ContactUs} />
-              <Route path="/login" component={Login} />
-              <Route path="/register" component={Register} />
+              <Route path="/login" component={LoginPage} />
+              <Route path="/register" component={RegisterPage} />
               <Route path="/myusers" component={MyUsers} />
               <Route path="/mygraphics" component={MyGraphics} />
               <Route path="/uploadgraphics" component={UploadGraphics} />

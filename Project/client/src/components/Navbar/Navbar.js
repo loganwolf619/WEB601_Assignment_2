@@ -1,24 +1,22 @@
 
-import React from 'react';
 import {Link} from 'react-router-dom';
-import {BtnContainer} from "./pageElements/Button";
-import {Navbar} from "./pageElements/StyledNavBar";
+import {BtnContainer} from '../pageElements/Button';
 import './Navbar.css';
 import React, { useState } from 'react';
-import {BtnContainer} from './pageElements/Buttons'
 import {
-  Merge,
-  Navbar,
-  NavbarScroller,
-  NavbarApex,
+
+Navbar,
+  Collapse,
+  NavbarToggler,
+  NavbarBrand,
   Nav,
   NavItem,
-  NavigationDropdown,
-  NavbarToggle,
+  UncontrolledButtonDropdown,
+  DropdownToggle,
   DropdownMenu,
-  NavbarDropDownList } 
+  DropdownItem } 
   from 'reactstrap';
- import './Navbar.css'
+
 
 
 const Menu = () => {
@@ -29,14 +27,14 @@ const Menu = () => {
   return (
     <div>
       <Navbar dark expand="md">
-        <NavbarApex href="/" className="apexlogo-container">                        
+        <NavbarBrand href="/" className="apexlogo-container">                        
             <img src='../../icons/Logo.JPG' alt="designWebsite" className="logo-navbar"/>
-        </NavbarApex>
+        </NavbarBrand>
         <NavItem>
             <h1 className="navBarBrand"><strong>Design and Illustration</strong></h1>
         </NavItem>
-        <NavbarScroller light onClick={toggle} />
-        <Merge allowsAccess={allowsAccess} navbar>
+        <NavbarToggler light onClick={toggle} />
+        <Collapse allowsAccess={allowsAccess} navbar>
           <Nav className="autoNavbar" navbar>
             <NavItem className="linkContainer">
                 <Link to="/Browse" className="navBarLink">
@@ -48,34 +46,34 @@ const Menu = () => {
                     Contact Us
                 </Link>
             </NavItem>
-            <NavigationDropdown nav ifNavBarTrue>
-              <NavbarToggle nav caret className="dropDown">
+            <UncontrolledButtonDropdown nav ifNavigationTrue>
+              <DropdownToggle nav caret className="dropDown">
                 <span className="navBarLink">Users</span>
-              </NavbarToggle>
+              </DropdownToggle>
               <DropdownMenu className="dropdownBackground" left>
-                <NavbarDropDownList>
+                <DropdownItem>
                     <Link to="/MyUsers" className="dropDownLink">
                         My Users
                     </Link>
-                </NavbarDropDownList>
-                <NavbarDropDownList>
+                </DropdownItem>
+                <DropdownItem>
                     <Link to="/UploadGraphics" className="dropDownLink">
                         Upload Graphics
                     </Link>
-                </NavbarDropDownList>
-                <NavbarDropDownList>
+                </DropdownItem>
+                <DropdownItem>
                     <Link to="/MyGraphics" className="dropDownLink">
                         My Graphics
                     </Link>
-                </NavbarDropDownList>
-                <NavbarDropDownList divider />
-                <NavbarDropDownList>
+                </DropdownItem>
+                <DropdownItem divider />
+                <DropdownItem>
                     <Link to="/" className="dropDownLink">
                         Sign Out
                     </Link>
-                </NavbarDropDownList>
+                </DropdownItem>
               </DropdownMenu>
-            </NavigationDropdown>
+            </UncontrolledButtonDropdown>
             <NavItem className="navButtons">
                 <Link to="/Login">
                     <BtnContainer>
@@ -91,7 +89,7 @@ const Menu = () => {
                 </Link>
             </NavItem>
           </Nav>
-        </Merge>
+        </Collapse>
       </Navbar>
     </div>
   );

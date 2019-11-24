@@ -1,7 +1,6 @@
 import {usersConstant} from '../constants/usersConstant'
 import {usersServices} from '../services/usersServices'
 import {usersAlerts} from './usersAlerts'
-import { usersServices } from '../services/usersServices'
 
 export const usersAction = {
     usersLogin,
@@ -12,7 +11,7 @@ export const usersAction = {
 
 function usersLogin(usersEmail, usersPassword) {
     return dispatch => {
-        dispatch(request({UsersEmail}))
+        dispatch(request({usersEmail}))
 
         usersServices.usersLogin(usersEmail, usersPassword)
             .then(
@@ -21,7 +20,7 @@ function usersLogin(usersEmail, usersPassword) {
                 },
                 error => {
                     dispatch(failure(error))
-                    dispatch(alertUsers.error(error))
+                    dispatch(usersAlerts.error(error))
                 }
             )
     }
@@ -31,10 +30,10 @@ function usersLogin(usersEmail, usersPassword) {
     function failure(error) { return { type: usersConstant.LOGIN_FAILURE, error } }
 }
 
-function logout() {
-    usersServices.logout()
+function userLogout() {
+    usersServices.userLogout()
     return {
-        type: usersConstant.logout
+        type: usersConstant.userLogout
     }
 }
 
