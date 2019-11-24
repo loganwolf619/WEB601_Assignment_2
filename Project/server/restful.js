@@ -14,7 +14,7 @@ const jsonParser = bodyParser.json()
 
 // We are going use the KNEX to connect with our MySQL database
 const knex = require('knex')({
-  client: 'mysql',0
+  client: 'mysql',
   connection: config.database
 })
 
@@ -64,5 +64,5 @@ app.use('/api', cors(), router);
 
 // We are going let the server to start listening to the port that has been specified in the config.js file
 app.listen(config.APIServerPort, () => {
-  console.log(`Server has started on this port:>-->-  ${config.APIServerPort}`);
-});
+  console.log(`Server has started on this port ${config.APIServerPort}`);
+})
