@@ -3,7 +3,7 @@ import Title from '../../pageElements/Title';
 import './Register.css';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
-import {Form, ButtonContainer} from 'semantic-ui-react';
+import {Form, Button} from 'semantic-ui-react';
 import { usersAction } from '../../../actions/usersAction';
 
 
@@ -113,7 +113,7 @@ class Register extends React.Component {
     return(
         <div className="registerContainer">
             <div className="registrationForm">
-                <PageTitle name="Registration" title="Form" />
+                <Title name="Registration" title="Form" />
                 <Form name="registrationForm" onSubmit= {this.submitSignUpForm} >
                     <br /> 
                     <div className={'groupForm' + (submitForm && !fields.UsersFName ? 'error' : '')}>
@@ -172,7 +172,7 @@ class Register extends React.Component {
                     <div className='errorNotification'>{this.state.errors.UsersPassword}</div>
                     <br />
                     <div className='groupForm'>
-                        <ButtonContainer className="button">Register</ButtonContainer> 
+                        <Button className="button">Register</Button> 
                         <Link to="/" className="button button-link">Cancel</Link>
                     </div>
                 </Form>

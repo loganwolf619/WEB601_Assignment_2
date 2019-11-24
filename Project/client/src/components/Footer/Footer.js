@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 import './Footer.css'
 import {Link} from 'react-router-dom'
 
@@ -34,10 +34,13 @@ const Footer = () => {
           </a>
         </li>
       </ul>
+      <Link to="/" className="list-item">
+        Contact Us
+      </Link>
   
     </div>
   
-    <div claclassNamess="footer-copyright text-center py-3">© 2018 Copyright:
+    <div claclassNamess="footer-copyright text-center py-3">© Apex-ShutteBug 2019 Copyright:
       <a href="#!"> Apex ShutterBug</a>
     </div>
 
