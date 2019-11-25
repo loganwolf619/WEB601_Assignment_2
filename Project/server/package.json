@@ -18,6 +18,7 @@
     "mdbreact": "^4.22.1",
     "mssql": "^5.1.0",
     "mysql": "^2.17.1",
+    "node-modules": "^1.0.1",
     "nodemon": "^1.19.4",
     "react-redux": "^7.1.3",
     "redux-thunk": "^2.3.0"
