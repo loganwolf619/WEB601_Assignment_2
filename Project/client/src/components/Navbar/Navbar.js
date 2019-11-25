@@ -1,13 +1,6 @@
 
-<<<<<<< HEAD:Project/client/src/components/Navbar/Navbar.js
 import {Link} from 'react-router-dom';
 import {BtnContainer} from '../pageElements/Button';
-=======
-import React from 'react';
-import {Link} from 'react-router-dom';
-import {BtnContainer} from "./pageElements/Button";
-import {Navbar} from "./pageElements/StyledNavBar";
->>>>>>> bf98b0612c921e28986990c475f76bfc486ff550:Project/client/src/components/Navbar.js
 import './Navbar.css';
 import React, { useState } from 'react';
 import {

@@ -3,18 +3,13 @@ import {Switch,Route} from 'react-router-dom';
 import './App.css';
 import Navbar from'./components/Navbar/Navbar'; 
 import Home from'./components/pages/Home/Home';
-import ContactUs from'./components/pages/ContactUs';
+import ContactUs from'./components/pages/ContactUs/ContactUs';
 import MyUsers from'./components/pages/MyUsers/MyUsers';
 import Default from './components/pages/Default';
 import BrowseGraphics from './components/pages/BrowseGraphics/Browse';
 import Footer from './components/Footer/Footer';
-<<<<<<< HEAD
 import {LoginPage} from './components/pages/Login/Login';
 import {RegisterPage} from'./components/pages/Register/Register';
-=======
-import {Login} from './components/pages/Login';
-import {Register} from'./components/pages/Register';
->>>>>>> bf98b0612c921e28986990c475f76bfc486ff550
 import MyGraphics from './components/pages/MyGraphics/MyGraphics';
 import UploadGraphics from'./components/pages/UploadGraphics/UploadGraphics';
 import EditUsers from'./components/pages/EditUsers/EditUsers';

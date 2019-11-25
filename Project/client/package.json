@@ -13,15 +13,9 @@
     "mysql2": "^1.7.0",
     "nodemon": "^1.19.2",
     "prop-types": "^15.7.2",
-<<<<<<< HEAD
     "react": "^16.12.0",
     "react-bootstrap": "^1.0.0-beta.12",
     "react-dom": "^16.12.0",
-=======
-    "react": "^16.11.0",
-    "react-bootstrap": "^1.0.0-beta.12",
-    "react-dom": "^16.11.0",
->>>>>>> bf98b0612c921e28986990c475f76bfc486ff550
     "react-mdl": "^1.11.0",
     "react-redux": "^7.1.3",
     "react-router": "^5.0.1",

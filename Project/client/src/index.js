@@ -6,7 +6,7 @@ import {BrowserRouter as Router} from 'react-router-dom';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
-// import $ from 'jquery';
+
 
 ReactDOM.render(
 <Router>
