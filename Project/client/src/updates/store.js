@@ -1,15 +1,15 @@
-import {buildStore, applyMiddleware} from 'redux'
+import {createStore, applyMiddleware} from 'redux'
 import thunkMiddleware from 'redux-thunk'
 import {createReduxLogger} from 'redux-logger'
 import rootReducers from '../reducers'
 
 
-const loggerMiddleWare = createReduxLogger()
+// const loggerMiddleWare = createReduxLogger()
 
-export const store = buildStore(
+export const store = createStore(
     rootReducers,
     applyMiddleware(
         thunkMiddleware,
-        loggerMiddleWare
+        // loggerMiddleWare
     )
 )

@@ -1,10 +1,10 @@
 import {usersConstant} from '../constants/usersConstant'
 
-let users = JSON.parse(localStorage,getItem('users'))
+let users = JSON.parse(localStorage.getItem('users'))
 const initialState = users ? {loggedIn: true, users} : {}
 
 
-export function autheticate(state = initialState, action) {
+export function authenticateReducer(state = initialState, action) {
     switch (action.type) {
         case usersConstant.Login_Request:
             return {

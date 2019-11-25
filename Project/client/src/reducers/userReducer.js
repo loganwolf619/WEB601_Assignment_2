@@ -1,5 +1,5 @@
 import {usersConstant} from '../constants/usersConstant'
-export function user(state = {}, action) {
+export function users(state = {}, action) {
     switch (action.type) {
         case usersConstant.GetAll_Request:
             return {
