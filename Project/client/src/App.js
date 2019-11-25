@@ -14,7 +14,6 @@ import MyGraphics from './components/pages/MyGraphics/MyGraphics';
 import UploadGraphics from'./components/pages/UploadGraphics/UploadGraphics';
 import EditUsers from'./components/pages/EditUsers/EditUsers';
 import EditGraphics from './components/pages/EditGraphics/EditGraphics';
-import AboutUs from'./components/pages/AboutUs/AboutUs';
 
 const App = () => (
   <div className="container">
@@ -33,7 +32,6 @@ const App = () => (
               <Route path="/uploadgraphics" component={UploadGraphics} />
               <Route path="/editusers" component={EditUsers} />
               <Route path="/editgraphics" component={EditGraphics} />            
-              <Route path="/aboutus" component={AboutUs} />
               <Route component={Default} />
             </Switch>
         </div>

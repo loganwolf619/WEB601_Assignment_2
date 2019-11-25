@@ -8,6 +8,7 @@ import {usersAction} from '../../../actions/usersAction'
 import './Login.css';
 
 
+
 class LoginPage extends React.Component {
     constructor(props) {
       super(props)
@@ -43,7 +44,7 @@ class LoginPage extends React.Component {
     }
   
     render() {
-        const { loggingIn } = this.props
+        // const { loggingIn } = this.props
         const { UsersEmail, UsersPassword, formSubmitted } = this.state
     
         return (

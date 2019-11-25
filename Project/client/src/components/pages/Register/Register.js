@@ -108,7 +108,7 @@ class Register extends React.Component {
   }
 
   render() {
-    const {registering} = this.props
+    // const {registering} = this.props
     const { fields, submitForm } = this.state
     return(
         <div className="registerContainer">
